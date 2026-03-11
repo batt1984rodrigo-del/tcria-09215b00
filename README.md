@@ -1,3 +1,39 @@
+# TCRIA
+
+**TCRIA** is a governance system for legal evidence processing pipelines.
+
+Instead of generating accusations or legal arguments automatically, TCRIA preserves the **documentary chain of custody** of heterogeneous evidence collections. The system ingests mixed archives of legal materials, classifies artifacts, records traceability signals, and applies governance gates that require explicit human accountability before accusatory narratives can pass through the system.
+
+Each run produces an **auditable evidence bundle** (JSON, Markdown, and PDF) documenting how documents were processed, which governance checks were applied, and where responsibility was declared.
+
+TCRIA is designed to support **legal audits, investigations, and evidence organization workflows** while maintaining strict responsibility boundaries between automated document processing and human legal judgment.
+
+---
+
+## Key idea
+
+TCRIA treats document analysis as a **custody workflow**, not merely text extraction.
+
+Instead of producing conclusions automatically, the system ensures that:
+
+* documentary evidence remains traceable
+* accusatory narratives require explicit human accountability
+* heterogeneous archives can be processed safely
+* the evidentiary chain remains auditable
+
+---
+
+## Pipeline overview
+
+document ingestion
+↓
+classification
+↓
+traceability signals
+↓
+governance gates
+↓
+audit bundle
 # TCRIA — Legal Evidence Chain-of-Custody and Governance System
 
 TCRIA is a **legal evidence chain-of-custody and governance system**.
