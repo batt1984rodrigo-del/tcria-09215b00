@@ -1,3 +1,5 @@
+> Note: curated sample audit outputs now live under `examples/audit-artifacts/`, and project structure snapshots now live under `docs/project-snapshots/`.
+
 NARRATIVA JURÍDICA ESTRUTURADA
 1️⃣ CONTEXTO FÁTICO (O PROBLEMA)
 

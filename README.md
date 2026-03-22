@@ -1,166 +1,56 @@
 # TCRIA
 
-**TCRIA** is a governance system for legal evidence processing pipelines.
+**TCRIA** is a governance-oriented system for legal evidence processing.
 
-Instead of generating accusations or legal arguments automatically, TCRIA preserves the **documentary chain of custody** of heterogeneous evidence collections. The system ingests mixed archives of legal materials, classifies artifacts, records traceability signals, and applies governance gates that require explicit human accountability before accusatory narratives can pass through the system.
-
-Each run produces an **auditable evidence bundle** (JSON, Markdown, and PDF) documenting how documents were processed, which governance checks were applied, and where responsibility was declared.
-
-TCRIA is designed to support **legal audits, investigations, and evidence organization workflows** while maintaining strict responsibility boundaries between automated document processing and human legal judgment.
+It is designed to help organize heterogeneous legal materials, preserve documentary traceability, and generate auditable bundles without turning the system into an automatic accusation engine. The core objective is to keep evidence processing structured while leaving legal judgment and narrative responsibility with the human operator.
 
 ---
 
-## Key idea
+## Executive summary
 
-TCRIA treats document analysis as a **custody workflow**, not merely text extraction.
+TCRIA helps teams and operators:
 
-Instead of producing conclusions automatically, the system ensures that:
+- ingest mixed legal document collections;
+- classify documentary artifacts;
+- record traceability and governance signals;
+- block or warn on risky accusatory content;
+- generate auditable outputs in JSON, Markdown, and PDF.
 
-* documentary evidence remains traceable
-* accusatory narratives require explicit human accountability
-* heterogeneous archives can be processed safely
-* the evidentiary chain remains auditable
-
----
-
-## Pipeline overview
-
-document ingestion
-↓
-classification
-↓
-traceability signals
-↓
-governance gates
-↓
-audit bundle
-
-
- ---
-
-# Purpose
-
-Legal cases often begin with **large collections of mixed documents**, such as:
-
-- PDFs
-- DOCX files
-- notes
-- reports
-- emails
-- drafts
-- contextual material
-
-Most tools only extract text or rank files.
-
-TCRIA introduces a **governance layer** that ensures:
-
-- accusatory narratives are not promoted without accountability
-- documentary evidence remains traceable
-- responsibility for narrative promotion is explicit
-- heterogeneous archives can be processed without producing uncontrolled conclusions
-
-The system therefore acts as a **custody and governance layer for legal documentation**.
+The project is intentionally focused on **organization, chain of custody, and governance discipline**.
 
 ---
 
-# Why this exists
+## What the system does
 
-Most document analyzers simply extract text and rank files.
+TCRIA treats document processing as a **custody workflow**:
 
-TCRIA adds **governance gates** so that accusatory content does not "pass" unless it carries explicit accountability metadata (`DecisionRecord`) and avoids prescriptive or condemnatory language.
+1. document ingestion;
+2. classification;
+3. traceability signals;
+4. governance gates;
+5. audit bundle generation.
 
-This protects the **chain of custody of narrative responsibility**.
+This makes the system useful for:
 
----
-
-# Core concept: documentary chain of custody
-
-TCRIA treats document processing as a **custody workflow**, not merely analysis.
-
-The system records how documents move through the pipeline:
-
-document ingestion
-↓
-classification
-↓
-traceability signals
-↓
-governance gates
-↓
-audit bundle 
-
-This produces a **controlled evidentiary trail** before human interpretation.
+- legal audits;
+- investigation support;
+- evidence organization;
+- documentary review workflows;
+- controlled preparation of governed case materials.
 
 ---
 
-# Features (MVP)
+## Governance boundaries
 
-### Document ingestion
+TCRIA is built around a simple rule: **automation can organize and audit evidence, but accountability for accusatory narrative promotion must remain human-declared**.
 
-Scan folders of mixed files:
+The system therefore applies governance checks such as:
 
-- PDF
-- DOCX
-- TXT
-- MD
+- **prescriptiveGate** — blocks condemnatory or prescriptive language;
+- **complianceGate** — requires explicit human accountability metadata in strict mode;
+- **traceabilityCheck** — looks for dates, references, markers, and evidence signals.
 
----
-
-### Evidence classification
-
-Artifacts are classified as:
-
-- neutral / context
-- supporting evidence
-- relevant evidence
-- accusatory candidates
-
----
-
-### Governance gates
-
-Three governance checks protect the custody chain:
-
-**prescriptiveGate**
-
-Blocks condemnatory or prescriptive language.
-
-**complianceGate**
-
-Requires explicit accountability metadata in strict mode.
-
-**traceabilityCheck**
-
-Looks for signals such as:
-
-- dates
-- references
-- evidentiary markers
-- currency indicators
-
----
-
-### Audit bundle output
-
-Each run produces:
-
-- JSON audit bundle
-- Markdown report
-- PDF audit report
-
-These outputs document how the system interpreted the collection.
-
-Blocked artifacts are **not reprocessed by the engine**.
-
-Instead they generate a **diagnostic report** analyzing potential evidentiary relevance without promoting them to the official accusation bundle.
-
----
-
-# Accountability metadata
-
-To promote accusatory content through the compliance gate, the document must include a **DecisionRecord** header.
-
-Example:
+### Decision record example
 
 ```text
 [TCR-IA DECISION RECORD]
@@ -171,26 +61,52 @@ approvedAt: 2026-03-05
 [/TCR-IA DECISION RECORD]
 ```
 
-This ensures that **responsibility for narrative promotion remains human-declared**.
-
 ---
 
-# What TCRIA does NOT do
+## What TCRIA does not do
 
 TCRIA intentionally does **not**:
 
-- generate legal pleadings
-- write accusations
-- construct legal theses
-- produce petitions automatically
-
-Those activities require **human legal judgment and responsibility**.
-
-TCRIA instead provides a **governed evidentiary foundation** that can later support human legal workflows.
+- generate legal pleadings;
+- write accusations automatically;
+- construct legal theses autonomously;
+- replace human legal judgment.
 
 ---
 
-# Installation
+## Repository structure
+
+The repository is organized so that code, operational scripts, documentation, and example artifacts are visually separated.
+
+```text
+.
+├── tcria/                  # Core package: engine, models, CLI support, settings
+├── api/                    # FastAPI application
+├── app/                    # Streamlit entrypoints / app layer
+├── scripts/                # Script-oriented utilities and legacy helpers
+├── docs/                   # Architecture and domain documentation
+│   └── project-snapshots/  # Saved project structure snapshots and diffs
+├── examples/
+│   ├── audit-artifacts/    # Versioned sample outputs and reports
+│   └── demo_case_documents/# Example input materials
+├── tests/                  # Automated tests
+├── run_governance_pipeline.py
+├── app.py
+└── pyproject.toml
+```
+
+### Folder conventions
+
+- **`tcria/`**: reusable product logic.
+- **`api/`**: HTTP entrypoints and request/response orchestration.
+- **`app/`**: UI/app runtime layer.
+- **`scripts/`**: operational scripts and support generators.
+- **`docs/`**: conceptual documentation and project snapshots.
+- **`examples/`**: curated example inputs and sample generated artifacts.
+
+---
+
+## Installation
 
 From the repository root:
 
@@ -201,34 +117,36 @@ pip install -U pip
 pip install -e .
 ```
 
-# CLI usage
+---
 
-Run from the repository root:
+## CLI usage
+
+### Basic scan
 
 ```bash
 tcria scan ~/Downloads --strict
 ```
 
-Modular product engine command:
+### Modular product audit
 
 ```bash
 tcria product-audit ~/Downloads --strict --out-dir output/audit --output-stem audit
 ```
 
-Official pipeline mode (existing scripts):
+### Official pipeline mode
 
 ```bash
 tcria product-audit ~/Downloads --strict --official-pipeline --output-stem my_case
 ```
 
-Direct pipeline command (modular engine by default, legacy optional):
+### Direct pipeline command
 
 ```bash
 python3 run_governance_pipeline.py --path ~/Downloads --strict --output-stem my_case
 python3 run_governance_pipeline.py --path ~/Downloads --strict --legacy-audit-script --output-stem my_case
 ```
 
-Case workspace flow:
+### Case workspace flow
 
 ```bash
 tcria case init complice
@@ -236,9 +154,11 @@ tcria case run complice --strict
 tcria investigate complice
 ```
 
+---
+
 ## API
 
-Run API:
+Run the API locally:
 
 ```bash
 uvicorn api.api:app --reload
@@ -248,129 +168,41 @@ Main endpoints:
 
 - `GET /health`
 - `GET /capabilities`
-- `POST /audit` (modular engine)
-- `POST /audit/official-pipeline` (scripted governance pipeline)
-- `GET /responses/audit-types` (available Responses API prompt presets)
-- `POST /responses/audit` (modular audit + Responses API analysis)
-- `POST /audit/openai-summary` (backward-compatible alias to `/responses/audit`)
-- `POST /cases/init` (initialize case workspace)
-- `POST /cases/run` (run official case pipeline + blocked/preparation/timeline layers)
-- `POST /cases/investigate` (generate final investigation report from case artifacts)
-- `POST /investigations/full-run` (initialize case if needed, run full investigative pipeline, return outputs, optional Responses API analysis)
-- `POST /conclusions/from-bundle` (build gateway-style final conclusions from an audit bundle)
-- `POST /gateways/legacy-accusation-audit` (run the legacy civil/criminal accusation gateway script)
+- `POST /audit`
+- `POST /audit/official-pipeline`
+- `GET /responses/audit-types`
+- `POST /responses/audit`
+- `POST /audit/openai-summary`
+- `POST /cases/init`
+- `POST /cases/run`
+- `POST /cases/investigate`
+- `POST /investigations/full-run`
+- `POST /conclusions/from-bundle`
 
-Security defaults for API usage:
+---
 
-- Input paths are restricted to `TCRIA_ALLOWED_INPUT_ROOTS` (comma-separated absolute paths).
-- If `TCRIA_ALLOWED_INPUT_ROOTS` is not set, only the server current working directory is allowed.
-- Request payload supports scan limits: `max_files` and `max_total_bytes`.
+## Architecture note
 
-Example:
+The architecture overview in `docs/architecture-overview.md` is kept as the project's current high-level representation. Operational implementation remains package- and script-oriented, and the repository structure is organized to support that working style cleanly.
 
-```bash
-uvicorn api.api:app --host 127.0.0.1 --port 8000
-```
+---
 
-Responses API preset example:
+## Sample artifacts and snapshots
 
-```bash
-curl -X POST http://127.0.0.1:8000/responses/audit \
-  -H "Content-Type: application/json" \
-  -d '{
-    "path": "/srv/tcria/cases/demo",
-    "strict": true,
-    "output_stem": "demo_audit",
-    "include_pdf": false,
-    "audit_type": "restitution_accountability",
-    "model": "gpt-4.1-mini",
-    "user_context": "Explain this restitution bundle for an accountability reviewer."
-  }'
-```
+To keep the repository root clean and professional:
 
-List available audit types:
+- curated generated sample outputs are stored in `examples/audit-artifacts/`;
+- project-structure snapshots and diffs are stored in `docs/project-snapshots/`;
+- runtime outputs can continue to be generated in local working directories such as `output/` or case folders.
 
-```bash
-curl http://127.0.0.1:8000/responses/audit-types
-```
+---
 
-Case workspace example:
+## Current professionalization goals
 
-```bash
-curl -X POST http://127.0.0.1:8000/cases/init \
-  -H "Content-Type: application/json" \
-  -d '{"case":"demo_case","root":"cases"}'
+This repository now prioritizes:
 
-curl -X POST http://127.0.0.1:8000/cases/run \
-  -H "Content-Type: application/json" \
-  -d '{"case":"demo_case","root":"cases","strict":true}'
-
-curl -X POST http://127.0.0.1:8000/cases/investigate \
-  -H "Content-Type: application/json" \
-  -d '{"case":"demo_case","root":"cases"}'
-```
-
-Full investigation run example:
-
-```bash
-curl -X POST http://127.0.0.1:8000/investigations/full-run \
-  -H "Content-Type: application/json" \
-  -d '{
-    "case":"demo_case",
-    "root":"cases",
-    "strict":true,
-    "paths":["/srv/tcria/cases/demo_case/input"],
-    "top_k":10,
-    "audit_type":"civil_criminal_investigative",
-    "analyze_with_openai":true,
-    "model":"gpt-4.1-mini"
-  }'
-```
-
-Gateway conclusions example:
-
-```bash
-curl -X POST http://127.0.0.1:8000/conclusions/from-bundle \
-  -H "Content-Type: application/json" \
-  -d '{"bundle_json_path":"output/audit/audit_strict.json"}'
-```
-
-Legacy accusation gateway example:
-
-```bash
-curl -X POST http://127.0.0.1:8000/gateways/legacy-accusation-audit \
-  -H "Content-Type: application/json" \
-  -d '{
-    "path": "/srv/tcria/cases/civil_or_criminal_bundle",
-    "strict": true,
-    "output_dir": "output/audit",
-    "output_stem": "legacy_gateway_run"
-  }'
-```
-
-## Web interface
-# Web interface
-
-A simple web interface is available via Streamlit:
-
-```bash
-streamlit run app.py
-```
-
-# Outputs
-
-Each run produces an audit bundle:
-
-```text
-output/audit/
-    audit.json
-    audit.md
-    audit_report.pdf
-```
-
-These artifacts document:
-
-- classification results
-- governance gate outcomes
-- traceability signals
-- compliance diagnostics
+- consistent structure;
+- executive README presentation;
+- visual separation between code, scripts, docs, and artifacts;
+- predictable folder naming;
+- less noise in the repository root.
