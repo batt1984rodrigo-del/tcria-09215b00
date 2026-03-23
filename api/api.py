@@ -14,9 +14,10 @@ from pydantic import BaseModel, Field
 from tcria.cli import case_init, case_run, investigate, load_manifest, resolve_case_dir
 from tcria.conclusion_engine import build_conclusion_report, render_final_conclusions_md
 from tcria.engine import TCRIAEngine
-from tcria.institutional_output import build_institutional_output, render_institutional_markdown
+from tcria.institutional_output import render_institutional_markdown
 from tcria.openai_responses import (
     list_audit_prompt_presets,
+    run_institutional_output_prompt,
     run_audit_prompt,
 )
 from tcria.settings import load_env
@@ -77,6 +78,11 @@ class InstitutionalOutputRequest(BaseModel):
     audit_data: dict[str, Any] = Field(
         ...,
         description="Structured process audit data used to build an institutional dispatch-ready output.",
+    )
+    model: str = Field("gpt-4.1-mini", description="OpenAI model used for institutional drafting.")
+    user_context: str | None = Field(
+        default=None,
+        description="Optional extra instruction for the institutional drafting module.",
     )
 
 
@@ -245,7 +251,7 @@ def capabilities() -> dict[str, object]:
             "case_run",
             "case_investigate",
             "bundle_conclusions",
-            "institutional_output_render",
+            "responses_institutional_output",
             "legacy_gateway_audit",
         ]
     }
@@ -391,12 +397,18 @@ def api_bundle_conclusions(payload: BundleConclusionRequest) -> dict[str, object
     }
 
 
-@app.post("/institutional-output/render")
-def api_render_institutional_output(payload: InstitutionalOutputRequest) -> dict[str, object]:
-    output = build_institutional_output(payload.audit_data)
+@app.post("/responses/institutional-output")
+def api_run_institutional_output(payload: InstitutionalOutputRequest) -> dict[str, object]:
+    result = run_institutional_output_prompt(
+        payload.audit_data,
+        model=payload.model,
+        user_context=payload.user_context,
+    )
+    output = result["institutional_output"]
     return {
         "institutional_output": output,
         "markdown": render_institutional_markdown(output),
+        "response_metadata": result["response_metadata"],
     }
 
 

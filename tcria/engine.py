@@ -14,7 +14,6 @@ from tcria.governance import (
     evaluate_traceability_check,
 )
 from tcria.ingestion import load_documents
-from tcria.institutional_output import build_institutional_output_from_bundle
 from tcria.models import AuditRecord
 from tcria.signals import detect_signals
 
@@ -133,18 +132,11 @@ class TCRIAEngine:
 
         bundle_input_repr = paths[0] if len(paths) == 1 else ",".join(paths)
         bundle = build_audit_bundle(records, input_path=bundle_input_repr, strict=strict)
-        institutional_output = build_institutional_output_from_bundle(bundle)
         effective_stem = output_stem
         if strict and not effective_stem.endswith("_strict"):
             effective_stem = f"{effective_stem}_strict"
-        artifacts = write_audit_artifacts(
-            bundle,
-            out_dir=out_dir,
-            output_stem=effective_stem,
-            include_pdf=include_pdf,
-            institutional_output=institutional_output,
-        )
-        return {"bundle": bundle, "institutional_output": institutional_output, "artifacts": artifacts}
+        artifacts = write_audit_artifacts(bundle, out_dir=out_dir, output_stem=effective_stem, include_pdf=include_pdf)
+        return {"bundle": bundle, "artifacts": artifacts}
 
     def run_official_pipeline(
         self,

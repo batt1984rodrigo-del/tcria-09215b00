@@ -5,7 +5,7 @@ from pathlib import Path
 import pytest
 
 from tcria.engine import TCRIAEngine
-from tcria.institutional_output import build_institutional_output, build_institutional_output_from_bundle
+from tcria.institutional_output import normalize_institutional_output, render_institutional_markdown
 from tcria.ingestion.file_loader import load_documents
 
 
@@ -42,10 +42,8 @@ def test_engine_run_audit_smoke(tmp_path: Path) -> None:
     artifacts = result["artifacts"]
     assert bundle["total_files_scanned"] == 1
     assert bundle["accusation_set_count"] >= 0
-    assert "institutional_output" in result
     assert Path(artifacts["json"]).exists()
     assert Path(artifacts["markdown"]).exists()
-    assert Path(artifacts["institutional_markdown"]).exists()
 
 
 def test_load_documents_respects_max_files(tmp_path: Path) -> None:
@@ -67,46 +65,46 @@ def test_load_documents_respects_max_total_bytes(tmp_path: Path) -> None:
         load_documents(str(input_dir), max_total_bytes=5)
 
 
-def test_build_institutional_output_prefers_specialized_remessa() -> None:
-    output = build_institutional_output(
+def test_normalize_institutional_output_fills_required_fields() -> None:
+    output = normalize_institutional_output(
         {
-            "process_number": "SEI-000000/000000/2026",
-            "process_type": "principal",
-            "interested_party": "Empresa XPTO",
-            "subject": "pedido de inscrição estadual",
-            "stage": "análise inicial",
-            "documents_present": ["petição inicial", "comprovante cadastral"],
-            "documents_missing": ["comprovante idôneo de recolhimento"],
-            "inconsistencies": ["divergência entre CNPJ da petição e do cadastro"],
-            "legal_basis": ["Aplica-se o rito de saneamento prévio da instrução."],
-            "competence_notes": ["Compete à unidade especializada a análise temática do pedido."],
-            "specialized_unit": "Cefage",
+            "identificacao_do_caso": {
+                "processo": "SEI-000000/000000/2026",
+                "tipo": "principal",
+                "interessado": "Empresa XPTO",
+                "tema": "pedido de inscrição estadual",
+            },
+            "achados_objetivos": ["Consta petição inicial."],
+            "enquadramento": ["Aplica-se o rito de saneamento prévio da instrução."],
+            "conclusao_operacional": "Recomenda-se remessa à unidade competente.",
+            "tipo_de_ato_sugerido": "remessa",
+            "minuta_sugerida": "Trata-se de pedido de inscrição estadual. Encaminhem-se os autos à Cefage.",
         }
     )
 
-    assert output["tipo_de_ato_sugerido"] == "remessa"
-    assert "Cefage" in output["conclusao_operacional"]
-    assert "encaminhem-se os autos à Cefage." in output["minuta_sugerida"]
-    assert output["qualificacao_do_problema"]["ha_unidade_especializada"] == "sim"
+    assert output["identificacao_do_caso"]["processo"] == "SEI-000000/000000/2026"
+    assert output["identificacao_do_caso"]["unidade_origem"] == "Não informada."
+    assert output["riscos_ou_lacunas"] == []
 
 
-def test_build_institutional_output_from_bundle_marks_preliminary_source() -> None:
-    output = build_institutional_output_from_bundle(
+def test_render_institutional_markdown_uses_normalized_fields() -> None:
+    markdown = render_institutional_markdown(
         {
-            "audit_basis": "Base de auditoria TCRIA.",
-            "compliance_gate_mode": "strict-explicit-decision-record",
-            "route_counts": {"FISCAL_SUPPORT": 2},
-            "accusation_set_count": 0,
-            "accusation_set": [],
-            "non_accusation_set": [
-                {
-                    "file_name": "doc1.pdf",
-                    "classification": "SUPPORTING_EVIDENCE_RELEVANT",
-                }
-            ],
+            "identificacao_do_caso": {
+                "processo": "SEI-123",
+                "tipo": "intercorrente",
+                "interessado": "EMPRESA X",
+                "tema": "inscrição estadual",
+            },
+            "achados_objetivos": ["Consta petição inicial."],
+            "enquadramento": ["A matéria demanda análise especializada."],
+            "riscos_ou_lacunas": ["Ausência de comprovante idôneo de recolhimento."],
+            "conclusao_operacional": "Recomenda-se encaminhamento.",
+            "tipo_de_ato_sugerido": "encaminhamento",
+            "minuta_sugerida": "Trata-se de inscrição estadual. Encaminhem-se os autos.",
         }
     )
 
-    assert output["metadados_da_saida"]["fonte"] == "bundle_tcria"
-    assert output["metadados_da_saida"]["trata_se_de_leitura_preliminar"] == "sim"
-    assert output["identificacao_do_caso"]["tema"] == "matéria não detalhada no bundle TCRIA"
+    assert "## IDENTIFICAÇÃO DO CASO" in markdown
+    assert "SEI-123" in markdown
+    assert "Encaminhem-se os autos." in markdown
