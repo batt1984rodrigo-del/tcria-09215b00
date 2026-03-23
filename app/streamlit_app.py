@@ -8,6 +8,7 @@ import streamlit as st
 from tcria.engine import TCRIAEngine
 from tcria.institutional_output import render_institutional_markdown
 from tcria.openai_responses import (
+    list_available_institutional_chat_profiles,
     list_audit_prompt_presets,
     run_audit_prompt,
     run_institutional_output_prompt,
@@ -42,6 +43,17 @@ def render() -> None:
             "Paste `audit_data` here to generate the institutional output through the OpenAI Responses API."
         ),
     )
+    institutional_profiles = list_available_institutional_chat_profiles()
+    institutional_profile_map = {profile["label"]: profile for profile in institutional_profiles}
+    institutional_profile_labels = list(institutional_profile_map)
+    selected_institutional_profile_label = st.selectbox(
+        "Institutional chat profile",
+        institutional_profile_labels,
+        index=0,
+        disabled=not use_institutional_gpt,
+    )
+    selected_institutional_profile = institutional_profile_map[selected_institutional_profile_label]
+    st.caption(selected_institutional_profile["description"])
 
     presets = list_audit_prompt_presets()
     preset_map = {preset["label"]: preset for preset in presets}
@@ -103,6 +115,7 @@ def render() -> None:
                             parsed_institutional_input,
                             model=openai_model,
                             user_context=openai_context or None,
+                            chat_profile=selected_institutional_profile["slug"],
                         )
                 except Exception as exc:
                     st.warning(f"Institutional drafting module failed: {exc}")
@@ -139,6 +152,7 @@ def render() -> None:
                     response_metadata = institutional_result.get("response_metadata", {})
                     st.caption(
                         f"Responses API model: {response_metadata.get('model')} | "
+                        f"chat_profile: {response_metadata.get('chat_profile')} | "
                         f"response_id: {response_metadata.get('response_id')}"
                     )
                     st.subheader("Identificação do caso")

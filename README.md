@@ -171,7 +171,9 @@ Main endpoints:
 - `POST /audit`
 - `POST /audit/official-pipeline`
 - `GET /responses/audit-types`
+- `GET /responses/institutional-profiles`
 - `POST /responses/audit`
+- `POST /responses/institutional-output`
 - `POST /audit/openai-summary`
 - `POST /cases/init`
 - `POST /cases/run`

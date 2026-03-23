@@ -16,6 +16,7 @@ from tcria.conclusion_engine import build_conclusion_report, render_final_conclu
 from tcria.engine import TCRIAEngine
 from tcria.institutional_output import render_institutional_markdown
 from tcria.openai_responses import (
+    list_available_institutional_chat_profiles,
     list_audit_prompt_presets,
     run_institutional_output_prompt,
     run_audit_prompt,
@@ -79,10 +80,18 @@ class InstitutionalOutputRequest(BaseModel):
         ...,
         description="Structured process audit data used to build an institutional dispatch-ready output.",
     )
+    chat_profile: str = Field(
+        "fazendario_institucional",
+        description="Named chat profile used to define the institutional drafting behavior.",
+    )
     model: str = Field("gpt-4.1-mini", description="OpenAI model used for institutional drafting.")
     user_context: str | None = Field(
         default=None,
         description="Optional extra instruction for the institutional drafting module.",
+    )
+    system_prompt_override: str | None = Field(
+        default=None,
+        description="Optional system-prompt override when you want to define the chat behavior explicitly.",
     )
 
 
@@ -247,6 +256,7 @@ def capabilities() -> dict[str, object]:
             "audit",
             "official_pipeline",
             "responses_audit",
+            "responses_institutional_profiles",
             "case_init",
             "case_run",
             "case_investigate",
@@ -260,6 +270,11 @@ def capabilities() -> dict[str, object]:
 @app.get("/responses/audit-types")
 def get_response_audit_types() -> dict[str, object]:
     return {"audit_types": list_audit_prompt_presets()}
+
+
+@app.get("/responses/institutional-profiles")
+def get_institutional_chat_profiles() -> dict[str, object]:
+    return {"chat_profiles": list_available_institutional_chat_profiles()}
 
 
 @app.post("/audit")
@@ -403,6 +418,8 @@ def api_run_institutional_output(payload: InstitutionalOutputRequest) -> dict[st
         payload.audit_data,
         model=payload.model,
         user_context=payload.user_context,
+        chat_profile=payload.chat_profile,
+        system_prompt_override=payload.system_prompt_override,
     )
     output = result["institutional_output"]
     return {

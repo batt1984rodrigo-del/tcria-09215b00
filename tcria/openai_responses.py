@@ -5,6 +5,7 @@ import os
 from dataclasses import dataclass
 from typing import Any
 
+from tcria.institutional_profiles import get_institutional_chat_profile, list_institutional_chat_profiles
 from tcria.institutional_output import INSTITUTIONAL_OUTPUT_SCHEMA, normalize_institutional_output
 from tcria.settings import load_env
 
@@ -18,24 +19,6 @@ SYSTEM_PROMPT = (
     "Summarize governance findings, accountability risks, documentary gaps, and operational next steps. "
     "Do not give legal advice or invent facts outside the bundle."
 )
-
-INSTITUTIONAL_SYSTEM_PROMPT = """
-Você é um redator institucional especializado em auditoria processual e minutas administrativas.
-
-Sua função é atuar como módulo externo de formulação institucional. Você recebe `audit_data` estruturado e devolve apenas um JSON válido,
-sem markdown, sem comentários e sem texto fora do schema.
-
-Regras obrigatórias:
-- escrever em português do Brasil;
-- usar tom institucional, formal, técnico e sóbrio;
-- separar fato objetivo, enquadramento e providência;
-- não inventar fatos, documentos, normas ou competências;
-- se faltar documento, dizer expressamente qual falta;
-- se os elementos forem insuficientes para despacho final, não forçar deferimento ou indeferimento;
-- sempre indicar o tipo de ato sugerido;
-- a minuta precisa ser curta, formal e pronta para subir.
-""".strip()
-
 
 @dataclass(frozen=True)
 class AuditPromptPreset:
@@ -120,6 +103,10 @@ def list_audit_prompt_presets() -> list[dict[str, str]]:
         }
         for preset in AUDIT_PROMPT_PRESETS.values()
     ]
+
+
+def list_available_institutional_chat_profiles() -> list[dict[str, str]]:
+    return list_institutional_chat_profiles()
 
 
 def get_audit_prompt_preset(audit_type: str) -> AuditPromptPreset:
@@ -289,6 +276,8 @@ def run_institutional_output_prompt(
     *,
     model: str | None = None,
     user_context: str | None = None,
+    chat_profile: str = "fazendario_institucional",
+    system_prompt_override: str | None = None,
 ) -> dict[str, Any]:
     try:
         from openai import OpenAI
@@ -299,10 +288,12 @@ def run_institutional_output_prompt(
     if not api_key:
         raise RuntimeError("OPENAI_API_KEY is not set.")
 
+    profile = get_institutional_chat_profile(chat_profile)
     client = OpenAI(api_key=api_key)
     prompt_payload = {
         "task": "Gerar saída institucional para auditoria processual.",
         "user_context": user_context or "Aplicar redação institucional formal, pronta para expediente.",
+        "chat_profile": profile.slug,
         "schema": INSTITUTIONAL_OUTPUT_SCHEMA,
         "audit_data": audit_data,
     }
@@ -312,7 +303,7 @@ def run_institutional_output_prompt(
         input=[
             {
                 "role": "system",
-                "content": [{"type": "input_text", "text": INSTITUTIONAL_SYSTEM_PROMPT}],
+                "content": [{"type": "input_text", "text": system_prompt_override or profile.system_prompt}],
             },
             {
                 "role": "user",
@@ -323,7 +314,10 @@ def run_institutional_output_prompt(
     parsed = normalize_institutional_output(_parse_json_response(response))
     return {
         "institutional_output": parsed,
-        "response_metadata": _response_metadata(response),
+        "response_metadata": {
+            **_response_metadata(response),
+            "chat_profile": profile.slug,
+        },
     }
 
 

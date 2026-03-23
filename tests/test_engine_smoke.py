@@ -7,6 +7,7 @@ import pytest
 from tcria.engine import TCRIAEngine
 from tcria.institutional_output import normalize_institutional_output, render_institutional_markdown
 from tcria.ingestion.file_loader import load_documents
+from tcria.openai_responses import list_available_institutional_chat_profiles
 
 
 def test_engine_run_audit_smoke(tmp_path: Path) -> None:
@@ -108,3 +109,10 @@ def test_render_institutional_markdown_uses_normalized_fields() -> None:
     assert "## IDENTIFICAÇÃO DO CASO" in markdown
     assert "SEI-123" in markdown
     assert "Encaminhem-se os autos." in markdown
+
+
+def test_list_available_institutional_chat_profiles_returns_profiles() -> None:
+    profiles = list_available_institutional_chat_profiles()
+
+    assert profiles
+    assert any(profile["slug"] == "fazendario_institucional" for profile in profiles)
