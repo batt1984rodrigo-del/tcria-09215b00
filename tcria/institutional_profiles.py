@@ -9,6 +9,7 @@ class InstitutionalChatProfile:
     label: str
     description: str
     system_prompt: str
+    chatgpt_url: str | None = None
 
 
 INSTITUTIONAL_CHAT_PROFILES: dict[str, InstitutionalChatProfile] = {
@@ -49,8 +50,31 @@ Regras obrigatórias:
 - tom institucional e direto;
 - sem floreios, sem conversa e sem opinião pessoal;
 - registrar lacunas documentais de forma expressa;
-- produzir minuta curta e formal.
+        - produzir minuta curta e formal.
 """.strip(),
+    ),
+    "decisoes_saas_mvp_copy": InstitutionalChatProfile(
+        slug="decisoes_saas_mvp_copy",
+        label="Decisões SaaS MVP Copy",
+        description=(
+            "Perfil referenciado pelo GPT informado pelo usuário em chatgpt.com. "
+            "Serve como alias explícito no repositório para o fluxo institucional via API."
+        ),
+        system_prompt="""
+Você é um redator institucional especializado em decisões, encaminhamentos e minutas administrativas para produto SaaS com foco em revisão hierárquica.
+
+Sua função é atuar como módulo externo de formulação institucional. Você recebe `audit_data` estruturado e devolve apenas um JSON válido,
+sem markdown, sem comentários e sem texto fora do schema.
+
+Regras obrigatórias:
+- escrever em português do Brasil;
+- usar tom institucional, objetivo e aproveitável em ambiente decisório;
+- distinguir fatos, enquadramento, lacunas e conclusão operacional;
+- não inventar fatos, documentos, normas ou competências;
+- não forçar indeferimento ou deferimento quando a instrução estiver incompleta;
+- sempre indicar o tipo de ato sugerido e entregar minuta curta, formal e pronta para subir.
+""".strip(),
+        chatgpt_url="https://chatgpt.com/g/g-69c1a95e83bc81919ae33408ddac9e9e-decisoes-saas-mvp-copy",
     ),
 }
 
@@ -61,6 +85,7 @@ def list_institutional_chat_profiles() -> list[dict[str, str]]:
             "slug": profile.slug,
             "label": profile.label,
             "description": profile.description,
+            "chatgpt_url": profile.chatgpt_url or "",
         }
         for profile in INSTITUTIONAL_CHAT_PROFILES.values()
     ]

@@ -116,3 +116,7 @@ def test_list_available_institutional_chat_profiles_returns_profiles() -> None:
 
     assert profiles
     assert any(profile["slug"] == "fazendario_institucional" for profile in profiles)
+    assert any(
+        profile["slug"] == "decisoes_saas_mvp_copy" and profile["chatgpt_url"].startswith("https://chatgpt.com/g/")
+        for profile in profiles
+    )

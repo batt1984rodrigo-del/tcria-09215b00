@@ -54,6 +54,8 @@ def render() -> None:
     )
     selected_institutional_profile = institutional_profile_map[selected_institutional_profile_label]
     st.caption(selected_institutional_profile["description"])
+    if selected_institutional_profile.get("chatgpt_url"):
+        st.caption(f"ChatGPT reference: {selected_institutional_profile['chatgpt_url']}")
 
     presets = list_audit_prompt_presets()
     preset_map = {preset["label"]: preset for preset in presets}
