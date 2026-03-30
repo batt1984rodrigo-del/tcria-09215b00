@@ -37,3 +37,6 @@ py-modules = [
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["tcria*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
