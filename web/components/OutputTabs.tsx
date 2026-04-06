@@ -3,7 +3,7 @@ const outputTabs = ['Markdown', 'JSON', 'PDF'];
 export function OutputTabs() {
   return (
     <section className="rounded-2xl border border-slate-200 bg-white p-6">
-      <h2 className="text-2xl font-semibold">Output Gallery</h2>
+      <h2 className="text-2xl font-semibold">Galeria de saídas</h2>
       <div className="mt-4 flex flex-wrap gap-3">
         {outputTabs.map((tab) => (
           <button
@@ -16,7 +16,7 @@ export function OutputTabs() {
         ))}
       </div>
       <p className="mt-4 text-sm text-slate-600">
-        Preview normalized institutional outputs with format-specific rendering blocks.
+        Pré-visualize artefatos institucionais normalizados com blocos de renderização por formato.
       </p>
     </section>
   );

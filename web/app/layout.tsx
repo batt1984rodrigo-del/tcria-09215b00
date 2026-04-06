@@ -3,15 +3,15 @@ import Link from 'next/link';
 import '@/styles/globals.css';
 
 export const metadata: Metadata = {
-  title: 'TCRIA | Product Front-End',
-  description: 'Commercial landing and interactive demo for the TCRIA governance pipeline.'
+  title: 'TCRIA | Front-end de Produto',
+  description: 'Landing comercial e demonstração interativa para o pipeline de governança do TCRIA.'
 };
 
 const navItems = [
-  { href: '/', label: 'Home' },
-  { href: '/demo', label: 'Demo' },
-  { href: '/architecture', label: 'Architecture' },
-  { href: '/outputs', label: 'Outputs' }
+  { href: '/', label: 'Início' },
+  { href: '/demo', label: 'Demonstração' },
+  { href: '/architecture', label: 'Arquitetura' },
+  { href: '/outputs', label: 'Saídas' }
 ];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -8,18 +8,19 @@ export function DemoFlowExplorer() {
 
   return (
     <section className="rounded-2xl border border-slate-200 bg-white p-6">
-      <h2 className="text-2xl font-semibold">Pipeline walkthrough</h2>
+      <h2 className="text-2xl font-semibold">Visão guiada do pipeline</h2>
+
       <p className="mt-2 text-sm text-slate-600">
-        Selecione cada etapa para inspecionar como o TCRIA transforma evidência em decisão auditável.
+        Selecione cada etapa para entender como o TCRIA transforma evidência em decisão auditável.
       </p>
 
       <div className="mt-6 grid gap-3 md:grid-cols-5">
         {demoFlow.map((step) => {
           const isActive = step.id === activeStep.id;
+
           return (
             <button
               key={step.id}
-              type="button"
               onClick={() => setActiveStep(step)}
               className={`rounded-xl border px-3 py-3 text-left text-sm font-medium transition ${
                 isActive

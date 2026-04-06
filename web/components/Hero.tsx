@@ -8,17 +8,19 @@ export function Hero() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        Chaos → Structure → Evidence → Decision
+        Caos → Estrutura → Evidência → Decisão
       </motion.p>
+
       <motion.h1
         className="mt-4 max-w-3xl text-4xl font-semibold leading-tight md:text-5xl"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        Turn hidden documentary chaos into auditable decisions
+        Transforme o caos documental oculto em decisões auditáveis
       </motion.h1>
+
       <p className="mt-6 max-w-2xl text-lg text-slate-300">
-        TCRIA organizes, correlates, and governs complex evidence flows before risk becomes crisis.
+        O TCRIA organiza, correlaciona e governa fluxos complexos de evidência antes que o risco vire crise.
       </p>
     </section>
   );

@@ -1,66 +1,70 @@
 export const pipelineSteps = [
-  'Input ingestion',
-  'Classification',
-  'Traceability',
-  'Governance checks',
-  'Institutional output'
+  'Entrada',
+  'Classificação',
+  'Rastreabilidade',
+  'Governança',
+  'Saída institucional'
 ];
 
 export const gateDescriptions = [
   {
     title: 'Prescriptive Gate',
-    description: 'Transforms legal and evidentiary analysis into enforceable action paths.'
+    description: 'Bloqueia linguagem prescritiva ou condenatória sem fundamentação adequada.'
   },
   {
     title: 'Compliance Gate',
-    description: 'Blocks artifacts that violate procedural, legal, or governance constraints.'
+    description: 'Exige responsável declarado, propósito explícito e aprovação registrada antes da liberação.'
   },
   {
     title: 'Traceability Check',
-    description: 'Links every conclusion to auditable evidence chains and provenance anchors.'
+    description: 'Conecta cada conclusão a cadeias de evidência auditáveis e verificáveis.'
   },
   {
     title: 'Maturity Gate',
-    description: 'Grades institutional readiness before release into decision-making channels.'
+    description: 'Avalia o nível de prontidão institucional antes da utilização em decisões.'
   },
   {
     title: 'Ledger Runtime Check',
-    description: 'Verifies ledger integrity and execution consistency for governance runtime.'
+    description: 'Valida integridade de execução e consistência da cadeia de registros.'
   }
 ];
 
 export const sampleStats = [
-  { label: 'Files Scanned', value: '673' },
-  { label: 'Accusatory Candidates', value: '91' },
-  { label: 'Blocked by Compliance Gate', value: '89' },
-  { label: 'Financial Signals in One PDF', value: '138' }
+  { label: 'Arquivos varridos', value: '673' },
+  { label: 'Candidatos acusatórios', value: '91' },
+  { label: 'Bloqueados pelo Compliance Gate', value: '89' },
+  { label: 'Sinais financeiros em um PDF', value: '138' }
 ];
 
 export const demoFlow = [
   {
-    id: 'input',
-    title: 'Input',
+    id: 'entrada',
+    title: 'Entrada',
     detail:
-      'Raw PDF, DOCX, HTML and XLSX artifacts are normalized and chunked with metadata before analysis.'
+      'Arquivos PDF, DOCX, HTML e XLSX são normalizados e estruturados com metadados antes da análise.'
   },
   {
-    id: 'classification',
-    title: 'Classification',
-    detail: 'Each artifact receives legal intent, risk context and institutional profile mapping.'
+    id: 'classificacao',
+    title: 'Classificação',
+    detail:
+      'Cada documento recebe interpretação de contexto, intenção e enquadramento institucional.'
   },
   {
-    id: 'traceability',
-    title: 'Traceability',
-    detail: 'Evidence references and supporting snippets are linked to every argument and claim.'
+    id: 'rastreabilidade',
+    title: 'Rastreabilidade',
+    detail:
+      'Trechos e evidências são conectados diretamente a cada afirmação e conclusão.'
   },
   {
-    id: 'governance',
-    title: 'Governance',
-    detail: 'TCR Gateway gates execute policy checks, blocking non-compliant narratives and outputs.'
+    id: 'governanca',
+    title: 'Governança',
+    detail:
+      'Os gates do TCR executam validações e bloqueiam conteúdos não conformes.'
   },
   {
-    id: 'output',
-    title: 'Output',
-    detail: 'Decision-ready bundles are generated as Markdown, JSON and PDF institutional artifacts.'
+    id: 'saida',
+    title: 'Saída',
+    detail:
+      'São gerados artefatos institucionais em Markdown, JSON e PDF prontos para uso.'
   }
 ];

@@ -1,15 +1,15 @@
 const modules = [
-  'Core Python Engine (tcria/)',
-  'API Layer (api/)',
-  'Streamlit/Internal App (app/)',
-  'Next.js Product Front-End (web/)',
-  'Audit & Governance Reports'
+  'Núcleo Python (tcria/)',
+  'Camada de API (api/)',
+  'Aplicação interna Streamlit (app/)',
+  'Front-end de produto Next.js (web/)',
+  'Relatórios de auditoria e governança'
 ];
 
 export default function ArchitecturePage() {
   return (
     <div className="container-shell space-y-8">
-      <h1 className="text-4xl font-semibold">Architecture</h1>
+      <h1 className="text-4xl font-semibold">Arquitetura</h1>
       <p className="max-w-3xl text-slate-600">
         Front-end em Next.js desacoplado do core Python para evolução de produto sem comprometer a lógica institucional.
       </p>
