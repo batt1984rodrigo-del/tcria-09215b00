@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "ms-azuretools.vscode-azure-mcp-server",
+        "ms-azuretools.vscode-azureresourcegroups",
+        "ms-python.vscode-pylance",
+        "tomoki1207.pdf"
+    ]
+}
