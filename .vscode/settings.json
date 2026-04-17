@@ -1,0 +1,15 @@
+{
+    "azureResourceGroups.duplicateSubscriptionMode": true,
+    "azureResourceGroups.enableChatStandIn": true,
+    "azureMcp.readOnly": true,
+    "azureMcp.enabledServices": [
+        "acr"
+    ],
+    "azureResourceGroups.selectedSubscriptions": [
+        "batt"
+    ],
+    "python-envs.workspaceSearchPaths": [
+        "./**/.venv",
+        "ive"
+    ]
+}
