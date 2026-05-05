@@ -402,8 +402,7 @@ def api_case_investigate(payload: CaseInvestigateRequest) -> dict[str, object]:
             "investigation_report": report,
         }
     except SystemExit as exc:
-        raise HTTPException(status_code=400, detail=str(exc)) from exc
-
+           raise HTTPException(status_code=400, detail=str(exc)) from exc
 
 @app.post("/conclusions/from-bundle")
 def api_bundle_conclusions(payload: BundleConclusionRequest) -> dict[str, object]:
@@ -481,10 +480,11 @@ def api_full_investigation_run(payload: FullInvestigationRunRequest) -> dict[str
             **outputs,
             "responses_analysis": responses_analysis,
         }
-    except SystemExit as exc:
-        raise HTTPException(status_code=400, detail=str(exc)) from exc
-    except Exception as exc:
-        @app.post("/audit/report/pdf")
+except Exception as exc:
+    raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+
+@app.post("/audit/report/pdf")
 def generate_audit_report_pdf(payload: dict):
     try:
         pdf_bytes = generate_governance_pdf(
@@ -501,5 +501,4 @@ def generate_audit_report_pdf(payload: dict):
         )
 
     except Exception as exc:
-        raise HTTPException(status_code=400, detail=str(exc)) from exc
         raise HTTPException(status_code=400, detail=str(exc)) from exc
