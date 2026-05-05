@@ -5,6 +5,9 @@ import os
 import re
 import subprocess
 import sys
+from fastapi.responses import StreamingResponse
+from io import BytesIO
+from generate_unified_governance_report_pdf import generate_governance_pdf
 from pathlib import Path
 from typing import Any
 
