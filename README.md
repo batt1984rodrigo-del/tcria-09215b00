@@ -1,114 +1,93 @@
-# TCRIA
+# TCRIA — AI Governance for Legal Evidence
 
-**TCRIA** is a governance-oriented system for legal evidence processing.
+TCRIA is a governance-driven platform for legal evidence processing, chain-of-custody control, and auditable document workflows.
 
-It is designed to help organize heterogeneous legal materials, preserve documentary traceability, and generate auditable bundles without turning the system into an automatic accusation engine. The core objective is to keep evidence processing structured while leaving legal judgment and narrative responsibility with the human operator.
-
----
-
-## Executive summary
-
-TCRIA helps teams and operators:
-
-- ingest mixed legal document collections;
-- classify documentary artifacts;
-- record traceability and governance signals;
-- block or warn on risky accusatory content;
-- generate auditable outputs in JSON, Markdown, and PDF.
-
-The project is intentionally focused on **organization, chain of custody, and governance discipline**.
+It enables organizations to structure, audit, and validate complex evidence collections while preserving human accountability over legal conclusions.
 
 ---
 
-## What the system does
+## Why TCRIA exists
 
-TCRIA treats document processing as a **custody workflow**:
+Modern legal and investigative workflows face critical risks:
 
-1. document ingestion;
-2. classification;
-3. traceability signals;
-4. governance gates;
-5. audit bundle generation.
+- fragmented and unstructured evidence sources  
+- lack of traceability and auditability  
+- uncontrolled AI-generated narratives  
+- exposure to legal risk from automated accusations  
 
-This makes the system useful for:
-
-- legal audits;
-- investigation support;
-- evidence organization;
-- documentary review workflows;
-- controlled preparation of governed case materials.
+TCRIA solves this by introducing a **governed evidence pipeline** that enforces structure, traceability, and accountability.
 
 ---
 
-## Governance boundaries
+## What TCRIA does
 
-TCRIA is built around a simple rule: **automation can organize and audit evidence, but accountability for accusatory narrative promotion must remain human-declared**.
+TCRIA transforms document processing into a controlled governance workflow:
 
-The system therefore applies governance checks such as:
-
-- **prescriptiveGate** — blocks condemnatory or prescriptive language;
-- **complianceGate** — requires explicit human accountability metadata in strict mode;
-- **traceabilityCheck** — looks for dates, references, markers, and evidence signals.
-
-### Decision record example
-
-```text
-[TCR-IA DECISION RECORD]
-responsibleHuman: Rodrigo Baptista da Silva
-declaredPurpose: Auditoria documental e organização de evidências para fins jurídicos
-approved: YES
-approvedAt: 2026-03-05
-[/TCR-IA DECISION RECORD]
-```
+- Evidence ingestion from heterogeneous sources  
+- Artifact classification and organization  
+- Traceability signal generation  
+- Governance gates for risk control  
+- Auditable output generation (JSON, Markdown, PDF)
 
 ---
 
-## What TCRIA does not do
+## Governance-first architecture
 
-TCRIA intentionally does **not**:
+TCRIA is built on a core principle:
 
-- generate legal pleadings;
-- write accusations automatically;
-- construct legal theses autonomously;
-- replace human legal judgment.
+> Automation can organize and audit evidence —  
+> but accountability for interpretation must remain human.
 
----
+The system enforces:
 
-## Repository structure
-
-The repository is organized so that code, operational scripts, documentation, and example artifacts are visually separated.
-
-```text
-.
-├── tcria/                  # Core package: engine, models, CLI support, settings
-├── api/                    # FastAPI application
-├── app/                    # Streamlit entrypoints / app layer
-├── scripts/                # Script-oriented utilities and legacy helpers
-├── docs/                   # Architecture and domain documentation
-│   └── project-snapshots/  # Saved project structure snapshots and diffs
-├── examples/
-│   ├── audit-artifacts/    # Versioned sample outputs and reports
-│   └── demo_case_documents/# Example input materials
-├── tests/                  # Automated tests
-├── run_governance_pipeline.py
-├── app.py
-└── pyproject.toml
-```
-
-### Folder conventions
-
-- **`tcria/`**: reusable product logic.
-- **`api/`**: HTTP entrypoints and request/response orchestration.
-- **`app/`**: UI/app runtime layer.
-- **`scripts/`**: operational scripts and support generators.
-- **`docs/`**: conceptual documentation and project snapshots.
-- **`examples/`**: curated example inputs and sample generated artifacts.
+- **prescriptiveGate** — blocks accusatory or condemnatory language  
+- **complianceGate** — requires explicit human responsibility  
+- **traceabilityCheck** — validates references, dates, and evidence signals  
 
 ---
 
-## Installation
+## Who TCRIA is for
 
-From the repository root:
+- Legal teams and auditors  
+- Compliance and investigation units  
+- Public sector institutions  
+- Forensic and documentary analysis teams  
+- AI governance and risk teams  
+
+---
+
+## What makes TCRIA different
+
+- Governance-first (not AI-first)  
+- Designed to prevent misuse of automation  
+- Built for auditability and accountability  
+- Supports institutional and regulatory environments  
+- Ready for integration into enterprise workflows  
+
+---
+
+## SaaS readiness
+
+TCRIA is designed to operate as a service platform.
+
+It can be deployed as:
+
+- API-based SaaS (FastAPI backend)  
+- Evidence audit engine  
+- Investigation workflow system  
+- Governance layer for AI-assisted processes  
+
+Supported environments:
+
+- Azure App Service  
+- Containerized infrastructure (Docker)  
+- Enterprise internal deployments  
+
+---
+
+## Quick start
+
+### Installation
 
 ```bash
 python3 -m venv .venv
@@ -117,94 +96,121 @@ pip install -U pip
 pip install -e .
 ```
 
----
-
-## CLI usage
-
-### Basic scan
+### CLI usage
 
 ```bash
-tcria scan ~/Downloads --strict
+tcria scan ~/Documents --strict
 ```
 
-### Modular product audit
-
 ```bash
-tcria product-audit ~/Downloads --strict --out-dir output/audit --output-stem audit
+tcria product-audit ~/Documents --strict --output-stem audit
 ```
 
-### Official pipeline mode
+### Full pipeline
 
 ```bash
-tcria product-audit ~/Downloads --strict --official-pipeline --output-stem my_case
-```
-
-### Direct pipeline command
-
-```bash
-python3 run_governance_pipeline.py --path ~/Downloads --strict --output-stem my_case
-python3 run_governance_pipeline.py --path ~/Downloads --strict --legacy-audit-script --output-stem my_case
-```
-
-### Case workspace flow
-
-```bash
-tcria case init complice
-tcria case run complice --strict
-tcria investigate complice
+python3 run_governance_pipeline.py --path ~/Documents --strict --output-stem case_analysis
 ```
 
 ---
 
 ## API
 
-Run the API locally:
+Run locally:
 
 ```bash
 uvicorn api.api:app --reload
 ```
 
+Production:
+
+```bash
+gunicorn -k uvicorn.workers.UvicornWorker api.api:app --bind 0.0.0.0:8000
+```
+
 Main endpoints:
 
-- `GET /health`
-- `GET /capabilities`
 - `POST /audit`
 - `POST /audit/official-pipeline`
-- `GET /responses/audit-types`
-- `GET /responses/institutional-profiles`
-- `POST /responses/audit`
-- `POST /responses/institutional-output`
-- `POST /audit/openai-summary`
-- `POST /cases/init`
 - `POST /cases/run`
-- `POST /cases/investigate`
 - `POST /investigations/full-run`
 - `POST /conclusions/from-bundle`
 
 ---
 
-## Architecture note
+## Use cases
 
-The architecture overview in `docs/architecture-overview.md` is kept as the project's current high-level representation. Operational implementation remains package- and script-oriented, and the repository structure is organized to support that working style cleanly.
-
----
-
-## Sample artifacts and snapshots
-
-To keep the repository root clean and professional:
-
-- curated generated sample outputs are stored in `examples/audit-artifacts/`;
-- project-structure snapshots and diffs are stored in `docs/project-snapshots/`;
-- runtime outputs can continue to be generated in local working directories such as `output/` or case folders.
+- Legal audits and compliance reviews  
+- Evidence organization for investigations  
+- Controlled preparation of case materials  
+- AI governance and risk mitigation  
+- Institutional documentation pipelines  
 
 ---
 
-## Current professionalization goals
+## What TCRIA does NOT do
 
-This repository now prioritizes:
+TCRIA intentionally does not:
 
-- consistent structure;
-- executive README presentation;
-- visual separation between code, scripts, docs, and artifacts;
-- predictable folder naming;
-- less noise in the repository root.
+- generate legal accusations  
+- produce legal pleadings  
+- create autonomous legal conclusions  
+- replace human legal judgment  
+
+This ensures safe and responsible use in regulated environments.
+
+---
+
+## Example decision record
+
+```
+[TCR-IA DECISION RECORD]
+responsibleHuman: Rodrigo Baptista da Silva
+declaredPurpose: Evidence audit and legal documentation structuring
+approved: YES
+approvedAt: 2026-03-05
+[/TCR-IA DECISION RECORD]
+```
+
+---
+
+## Architecture overview
+
+- `tcria/` — core engine and governance logic  
+- `api/` — FastAPI service layer  
+- `app/` — application/UI layer  
+- `scripts/` — operational tooling  
+- `docs/` — architecture and documentation  
+- `examples/` — sample inputs and outputs  
+
+---
+
+## Strategic positioning
+
+TCRIA is not just a tool — it is a governance layer for AI-assisted legal workflows.
+
+It is designed to support:
+
+- institutional adoption  
+- regulatory alignment  
+- responsible AI usage in legal contexts  
+
+---
+
+## License
+
+MIT License
+
+---
+
+## Contact / Deployment
+
+For enterprise deployment, SaaS integration, or institutional adoption:
+
+→ Deploy via Azure or internal infrastructure  
+→ Integrate with existing legal workflows  
+→ Extend via API and automation pipelines  
+
+---
+
+TCRIA — bringing structure, accountability, and governance to legal evidence systems.
