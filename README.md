@@ -4,7 +4,124 @@ TCRIA is a governance-driven platform for legal evidence processing, chain-of-cu
 
 It enables organizations to structure, audit, and validate complex evidence collections while preserving human accountability over legal conclusions.
 
+---# TCRIA AI Governance Platform
+
+TCRIA is a governance-driven platform for legal evidence processing, chain-of-custody control, and auditable document workflows.
+
+It enables organizations to structure, audit, and validate complex evidence collections while preserving human accountability over legal conclusions.
+
 ---
+
+## Overview
+
+TCRIA introduces a controlled governance layer for AI-assisted document processing in legal, compliance, and investigative environments.
+
+Instead of automating legal conclusions, TCRIA ensures that:
+
+- evidence is structured and traceable  
+- outputs are auditable  
+- accountability remains explicitly human  
+
+---
+
+## Key Capabilities
+
+- Evidence ingestion from heterogeneous sources  
+- Automated classification and organization  
+- Traceability signal generation  
+- Governance gates for risk control  
+- Auditable output generation (JSON, Markdown, PDF)  
+- API-first architecture for integration  
+
+---
+
+## Governance and Safety
+
+TCRIA enforces strict governance boundaries:
+
+- Blocks prescriptive or accusatory automation  
+- Requires explicit human accountability metadata  
+- Ensures traceability before any output is promoted  
+
+This makes it suitable for regulated and high-risk environments.
+
+---
+
+## Use Cases
+
+- Legal audits and compliance reviews  
+- Investigation support and case preparation  
+- Evidence organization for complex cases  
+- AI governance and risk mitigation  
+- Public sector and institutional workflows  
+
+---
+
+## Deployment
+
+TCRIA is delivered as a cloud-ready service and can be deployed on:
+
+- Azure App Service  
+- Container environments (Docker)  
+- Enterprise private infrastructure  
+
+---
+
+## Integration
+
+TCRIA provides:
+
+- REST API endpoints  
+- Structured output formats  
+- Compatibility with document pipelines and case systems  
+
+---
+
+## Compliance Positioning
+
+TCRIA is designed for:
+
+- controlled AI usage  
+- institutional accountability  
+- audit-ready environments  
+
+It does not:
+
+- generate legal accusations  
+- replace legal professionals  
+- automate legal conclusions  
+
+---
+
+## Value Proposition
+
+TCRIA reduces operational risk by:
+
+- enforcing governance in AI workflows  
+- improving traceability of evidence  
+- preventing uncontrolled narrative generation  
+
+---
+
+## Target Customers
+
+- Legal departments  
+- Compliance teams  
+- Public institutions  
+- Investigation units  
+- Risk and governance teams  
+
+---
+
+## Getting Started
+
+Deploy via Azure and connect your document sources through the API.
+
+TCRIA will structure, audit, and govern your evidence workflows while maintaining full accountability control.
+
+---
+
+TCRIA — governance-first AI for legal evidence systems.
 
 ## Why TCRIA exists
 
