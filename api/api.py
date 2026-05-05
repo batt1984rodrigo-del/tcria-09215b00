@@ -379,6 +379,88 @@ def api_case_run(payload: CaseRunRequest) -> dict[str, object]:
         }
     except SystemExit as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
+@app.post("/audit/official-pipeline")
+def run_official_pipeline(payload: AuditRequest) -> dict[str, str]:
+    validated_path = _resolve_and_validate_input_path(payload.path)
+    try:
+        return engine.run_official_pipeline(
+            input_path=str(validated_path),
+            strict=payload.strict,
+            output_stem=payload.output_stem,
+            max_files=payload.max_files,
+            max_total_bytes=payload.max_total_bytes,
+        )
+    except Exception as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+
+@app.post("/responses/audit")
+def run_responses_audit(payload: OpenAIResponsesAuditRequest) -> dict[str, object]:
+    validated_path = _resolve_and_validate_input_path(payload.path)
+    try:
+        result = engine.run_audit(
+            input_path=str(validated_path),
+            strict=payload.strict,
+            out_dir=payload.out_dir,
+            output_stem=payload.output_stem,
+            include_pdf=payload.include_pdf,
+            max_files=payload.max_files,
+            max_total_bytes=payload.max_total_bytes,
+        )
+        bundle = result.get("bundle")
+        if not isinstance(bundle, dict):
+            raise RuntimeError("Audit result did not contain a bundle.")
+        responses_result = run_audit_prompt(
+            bundle,
+            audit_type=payload.audit_type,
+            model=payload.model,
+            user_context=payload.user_context,
+            max_items=payload.max_items,
+        )
+        return {"audit": result, "responses_analysis": responses_result}
+    except Exception as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+
+@app.post("/audit/openai-summary")
+def run_audit_openai_summary(payload: OpenAIResponsesAuditRequest) -> dict[str, object]:
+    return run_responses_audit(payload)
+
+
+@app.post("/cases/init")
+def api_case_init(payload: CaseInitRequest) -> dict[str, object]:
+    case_dir = _resolve_case_path(payload.case, payload.root)
+    try:
+        case_init(case_dir)
+        manifest = load_manifest(case_dir / "case_manifest.json")
+        return {
+            "case_dir": str(case_dir),
+            "manifest_path": str(case_dir / "case_manifest.json"),
+            "manifest": manifest,
+        }
+    except SystemExit as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+
+@app.post("/cases/run")
+def api_case_run(payload: CaseRunRequest) -> dict[str, object]:
+    case_dir = _resolve_case_path(payload.case, payload.root)
+    try:
+        case_run(
+            case_dir,
+            strict=payload.strict,
+            paths=payload.paths,
+            top_k=payload.top_k,
+            output_stem=payload.output_stem,
+        )
+        manifest = load_manifest(case_dir / "case_manifest.json")
+        return {
+            "case_dir": str(case_dir),
+            "manifest": manifest,
+            "latest_outputs": manifest.get("latest_outputs", {}),
+        }
+    except SystemExit as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
 
 
 @app.post("/cases/investigate")
@@ -402,7 +484,8 @@ def api_case_investigate(payload: CaseInvestigateRequest) -> dict[str, object]:
             "investigation_report": report,
         }
     except SystemExit as exc:
-           raise HTTPException(status_code=400, detail=str(exc)) from exc
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
 
 @app.post("/conclusions/from-bundle")
 def api_bundle_conclusions(payload: BundleConclusionRequest) -> dict[str, object]:
@@ -452,6 +535,7 @@ def api_full_investigation_run(payload: FullInvestigationRunRequest) -> dict[str
             top_k=payload.top_k,
             output_stem=payload.output_stem,
         )
+
         investigate(
             case_dir,
             audit=None,
@@ -465,6 +549,7 @@ def api_full_investigation_run(payload: FullInvestigationRunRequest) -> dict[str
 
         responses_analysis = None
         audit_bundle = outputs.get("audit_bundle")
+
         if payload.analyze_with_openai and isinstance(audit_bundle, dict):
             responses_analysis = run_audit_prompt(
                 audit_bundle,
@@ -480,8 +565,9 @@ def api_full_investigation_run(payload: FullInvestigationRunRequest) -> dict[str
             **outputs,
             "responses_analysis": responses_analysis,
         }
-except Exception as exc:
-    raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+    except Exception as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
 
 
 @app.post("/audit/report/pdf")
