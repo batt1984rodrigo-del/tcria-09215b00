@@ -484,4 +484,22 @@ def api_full_investigation_run(payload: FullInvestigationRunRequest) -> dict[str
     except SystemExit as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
     except Exception as exc:
+        @app.post("/audit/report/pdf")
+def generate_audit_report_pdf(payload: dict):
+    try:
+        pdf_bytes = generate_governance_pdf(
+            audit=payload.get("audit", {}),
+            blocked=payload.get("blocked", {}),
+        )
+
+        return StreamingResponse(
+            BytesIO(pdf_bytes),
+            media_type="application/pdf",
+            headers={
+                "Content-Disposition": "inline; filename=tcria-governance-report.pdf"
+            },
+        )
+
+    except Exception as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
         raise HTTPException(status_code=400, detail=str(exc)) from exc
