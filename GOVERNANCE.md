@@ -1,30 +1,154 @@
-# Governance
+# Governance Model — TCRIA
 
 ## Purpose
 
-TCRIA is a governance gateway for documentary evidence processing.
+TCRIA operates as a governance gateway for documentary evidence processing.
 
-Its output is designed to preserve traceability, accountability, and auditability before any human legal conclusion is promoted outside the repository.
+Its primary function is to ensure that all generated outputs preserve:
+
+- traceability  
+- accountability  
+- auditability  
+
+before any human legal conclusion is promoted outside the system.
+
+---
+
+## Core Principle
+
+TCRIA enforces a strict governance boundary:
+
+> Automation may organize, structure, and audit evidence.  
+> Legal interpretation, accusation, and narrative responsibility must remain human.
+
+---
+
+## Governance Structure
+
+TCRIA separates processing into two layers:
+
+### 1. Official Governance Layer
+- Produces auditable outputs derived from structured evidence  
+- Defines what is considered an **official outcome**  
+- Enforces all governance rules and accountability requirements  
+
+### 2. Complementary Processing Layer
+- Summarizes, prioritizes, and organizes evidence  
+- Supports investigation and preparation workflows  
+- **Cannot promote outputs into official outcomes**  
+
+---
 
 ## Core Guardrails
 
-1. Official outcomes are derived from the governed audit bundle, not from complementary narrative layers.
-2. Complementary layers may summarize, prioritize, and organize evidence, but they do not promote blocked artifacts into approved outcomes.
-3. Accountability metadata remains mandatory for strict-mode promotion of accusatory material.
-4. Human review is required before any petition, accusation, or legal thesis is finalized.
+TCRIA enforces the following non-negotiable constraints:
+
+- Official outcomes are derived exclusively from governed audit bundles  
+- Complementary layers cannot override governance decisions  
+- Accusatory or prescriptive content requires explicit human accountability  
+- Human review is mandatory before any legal conclusion is finalized  
+
+---
 
 ## Governance Gates
 
-- `prescriptiveGate`: blocks condemnatory or prescriptive language that would bypass human legal responsibility.
-- `complianceGate`: requires explicit accountability metadata such as `responsibleHuman`, `declaredPurpose`, and `approved`.
-- `traceabilityCheck`: evaluates whether the artifact contains enough traceable anchors to support controlled evidentiary handling.
+### prescriptiveGate
+Blocks condemnatory or prescriptive language that would bypass human legal responsibility.
+
+### complianceGate
+Requires explicit accountability metadata, including:
+
+- `responsibleHuman`  
+- `declaredPurpose`  
+- `approved`  
+
+### traceabilityCheck
+Validates whether the artifact contains sufficient:
+
+- references  
+- timestamps  
+- documentary anchors  
+
+to support controlled evidentiary handling.
+
+---
+
+## Accountability Model
+
+All governed outputs must be traceable to a declared human authority.
+
+Strict-mode promotion requires:
+
+- explicit responsibility attribution  
+- declared intent of use  
+- approval state recorded in metadata  
+
+Example:
+
+``` id="acc1"
+[TCR-IA DECISION RECORD]
+responsibleHuman: <name>
+declaredPurpose: <purpose>
+approved: YES
+approvedAt: <timestamp>
+[/TCR-IA DECISION RECORD]
+```
+
+---
 
 ## Release Governance
 
-- `v1.0.0-legal-baseline` marks the first formal baseline of the auditable legal-governance model.
-- `v1.0.0-legal-governance` is maintained as an alias for that same baseline to reflect the review wording used during PR discussion.
-- `v1.1.0-diagnostic-layer` marks the addition of complementary diagnostic and case-preparation layers without changing the official governance posture.
+TCRIA versioning reflects governance evolution:
+
+- **v1.0.0-legal-baseline**  
+  First formal baseline of the auditable governance model  
+
+- **v1.0.0-legal-governance**  
+  Alias maintained for review and consistency  
+
+- **v1.1.0-diagnostic-layer**  
+  Introduces complementary diagnostic and case-preparation layers  
+  without altering official governance outcomes  
+
+---
 
 ## Operational Rule
 
-If a new layer changes prioritization, reporting, or case preparation behavior, it must state explicitly whether the change is complementary-only or whether it modifies an official audit outcome.
+Any new layer or feature must explicitly declare:
+
+- whether it is **complementary-only**, or  
+- whether it **modifies official audit outcomes**
+
+Changes that affect official outcomes must:
+
+- be documented  
+- be versioned  
+- be auditable  
+
+---
+
+## Compliance Positioning
+
+TCRIA is designed to support:
+
+- legal and regulatory environments  
+- institutional audit requirements  
+- controlled AI-assisted workflows  
+
+It is not designed to:
+
+- automate accusations  
+- generate legal conclusions  
+- replace human legal authority  
+
+---
+
+## Final Statement
+
+TCRIA ensures that:
+
+- evidence remains structured  
+- accountability remains explicit  
+- automation remains bounded  
+
+This enables safe, controlled, and auditable use of AI in legal and investigative contexts.
