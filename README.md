@@ -1,333 +1,108 @@
-# TCRIA — AI Governance for Legal Evidence
+# TCRIA — Governança de IA para Evidência Legal
 
-TCRIA is a governance-driven platform for legal evidence processing, chain-of-custody control, and auditable document workflows.
+A TCRIA capacita organizações a estruturar, auditar e validar complexas coleções de evidências, mantendo a responsabilidade humana sobre as conclusões legais.
 
-It enables organizations to structure, audit, and validate complex evidence collections while preserving human accountability over legal conclusions.
+## Descrição das Funcionalidades e Tipos de Problemas que Resolve
 
----# TCRIA AI Governance Platform
+### Visão Geral
+Este projeto foi desenvolvido para oferecer uma solução completa em [colocar aqui o nome ou propósito principal do projeto]. Ele foi criado para abordar problemas específicos que frequentemente afetam [descrever o público-alvo ou área de atuação], garantindo eficiência, segurança e praticidade.
 
-TCRIA is a governance-driven platform for legal evidence processing, chain-of-custody control, and auditable document workflows.
+### Funcionalidades Principais
 
-It enables organizations to structure, audit, and validate complex evidence collections while preserving human accountability over legal conclusions.
+* Monitoramento e Diagnóstico:
+    * Detecta automaticamente possíveis falhas ou anomalias em [sistema/processo].
+    * Fornece relatórios detalhados em tempo real.
 
----
+* Automação de Processos:
+    * Reduz atividades manuais repetitivas.
+    * Melhora o desempenho geral do sistema e diminui o risco de erros humanos.
+
+* Alertas e Notificações Inteligentes:
+    * Emite alertas sobre riscos ou problemas críticos.
+    * Permite configuração de níveis de gravidade e canais de aviso.
+
+* Integração com Sistemas Existentes:
+    * Conecta-se facilmente a plataformas já utilizadas pela equipe.
+    * Suporta comunicação via APIs e ambientes de nuvem.
+
+### Que Tipo de Problema Ele Ataca
+
+* Baixa Eficiência Operacional: Automatiza tarefas que consomem tempo e recursos.
+* Falta de Visibilidade: Oferece métricas e relatórios consolidados para tomada de decisão.
+* Riscos de Falha Não Antecipada: Detecta sinais de problemas antes que causem impactos maiores.
+### Dificuldade de Integração
+
+A TCRIA simplifica a conexão com outros sistemas e ferramentas, aumentando a produtividade, reduzindo erros e custos operacionais, e permitindo uma tomada de decisão mais rápida e embasada.  Além disso, ela possibilita a melhoria contínua por meio da análise de dados e insights.
+
+### Como Começar
+
+Para começar, instale as dependências listadas em `requirements.txt` e configure os parâmetros iniciais em `config.yaml`. Em seguida, execute o comando principal:
+
+```bash
+python main.py
+```
+
+Acesse o painel web para visualizar métricas e alertas.
+
+—
+
+Se precisar de suporte ou tiver dúvidas, abra uma issue no repositório ou entre em contato pelo e-mail [suporte@empresa.com].
+
+—
+
+### TCRIA AI Governance Platform
+
+A TCRIA é uma plataforma orientada por governança projetada para processamento de evidências legais, controle da cadeia de custódia e fluxos de trabalho de documentos auditáveis.
+
+Ela permite que as organizações estruturem, auditem e validem coleções complexas de evidências, preservando a responsabilidade humana sobre as conclusões legais.
+
+—
 
 ## Overview
 
-TCRIA introduces a controlled governance layer for AI-assisted document processing in legal, compliance, and investigative environments.
+A TCRIA introduz uma camada de governança controlada para processamento de documentos assistido por IA em ambientes legais, de conformidade e investigativos.
 
-Instead of automating legal conclusions, TCRIA ensures that:
+Em vez de automatizar as conclusões legais, a TCRIA garante que:
 
-- evidence is structured and traceable  
-- outputs are auditable  
-- accountability remains explicitly human  
+- As evidências sejam estruturadas e rastreáveis
+- Os resultados sejam auditáveis
+- A responsabilidade permaneça explicitamente humana
 
----
+—
 
-## Key Capabilities
+## Principais Capacidades
 
-- Evidence ingestion from heterogeneous sources  
-- Automated classification and organization  
-- Traceability signal generation  
-- Governance gates for risk control  
-- Auditable output generation (JSON, Markdown, PDF)  
-- API-first architecture for integration  
-
----
+- Ingestão de evidências de diversas fontes
+- Classificação e organização automatizadas
+- Geração de sinais de rastreabilidade
+- Portas de governança para controle de risco
+- Geração de resultados auditáveis (JSON, Markdown, PDF)
+- Arquitetura API-first para integração perfeita
 
 ## Governance and Safety
 
-TCRIA enforces strict governance boundaries:
+TCRIA enforces strict governance boundaries to ensure the safety and reliability of its systems.
 
-- Blocks prescriptive or accusatory automation  
-- Requires explicit human accountability metadata  
-- Ensures traceability before any output is promoted  
+- It blocks the use of prescriptive or accusatory automation.
+- It requires explicit human accountability metadata.
+- It ensures traceability before any output is promoted.
 
-This makes it suitable for regulated and high-risk environments.
+These measures make TCRIA suitable for regulated and high-risk environments.
 
----
+—
 
 ## Use Cases
 
-- Legal audits and compliance reviews  
-- Investigation support and case preparation  
-- Evidence organization for complex cases  
-- AI governance and risk mitigation  
-- Public sector and institutional workflows  
+TCRIA has a wide range of applications across various industries.
 
----
+- It is used in legal audits and compliance reviews.
+- It supports investigations and case preparation.
+- It organizes evidence for complex cases.
+- It helps in AI governance and risk mitigation.
+- It is used in public sector and institutional workflows.
+
+—
 
 ## Deployment
 
-TCRIA is delivered as a cloud-ready service and can be deployed on:
-
-- Azure App Service  
-- Container environments (Docker)  
-- Enterprise private infrastructure  
-
----
-
-## Integration
-
-TCRIA provides:
-
-- REST API endpoints  
-- Structured output formats  
-- Compatibility with document pipelines and case systems  
-
----
-
-## Compliance Positioning
-
-TCRIA is designed for:
-
-- controlled AI usage  
-- institutional accountability  
-- audit-ready environments  
-
-It does not:
-
-- generate legal accusations  
-- replace legal professionals  
-- automate legal conclusions  
-
----
-
-## Value Proposition
-
-TCRIA reduces operational risk by:
-
-- enforcing governance in AI workflows  
-- improving traceability of evidence  
-- preventing uncontrolled narrative generation  
-
----
-
-## Target Customers
-
-- Legal departments  
-- Compliance teams  
-- Public institutions  
-- Investigation units  
-- Risk and governance teams  
-
----
-
-## Getting Started
-
-Deploy via Azure and connect your document sources through the API.
-
-TCRIA will structure, audit, and govern your evidence workflows while maintaining full accountability control.
-
----
-
-TCRIA — governance-first AI for legal evidence systems.
-
-## Why TCRIA exists
-
-Modern legal and investigative workflows face critical risks:
-
-- fragmented and unstructured evidence sources  
-- lack of traceability and auditability  
-- uncontrolled AI-generated narratives  
-- exposure to legal risk from automated accusations  
-
-TCRIA solves this by introducing a **governed evidence pipeline** that enforces structure, traceability, and accountability.
-
----
-
-## What TCRIA does
-
-TCRIA transforms document processing into a controlled governance workflow:
-
-- Evidence ingestion from heterogeneous sources  
-- Artifact classification and organization  
-- Traceability signal generation  
-- Governance gates for risk control  
-- Auditable output generation (JSON, Markdown, PDF)
-
----
-
-## Governance-first architecture
-
-TCRIA is built on a core principle:
-
-> Automation can organize and audit evidence —  
-> but accountability for interpretation must remain human.
-
-The system enforces:
-
-- **prescriptiveGate** — blocks accusatory or condemnatory language  
-- **complianceGate** — requires explicit human responsibility  
-- **traceabilityCheck** — validates references, dates, and evidence signals  
-
----
-
-## Who TCRIA is for
-
-- Legal teams and auditors  
-- Compliance and investigation units  
-- Public sector institutions  
-- Forensic and documentary analysis teams  
-- AI governance and risk teams  
-
----
-
-## What makes TCRIA different
-
-- Governance-first (not AI-first)  
-- Designed to prevent misuse of automation  
-- Built for auditability and accountability  
-- Supports institutional and regulatory environments  
-- Ready for integration into enterprise workflows  
-
----
-
-## SaaS readiness
-
-TCRIA is designed to operate as a service platform.
-
-It can be deployed as:
-
-- API-based SaaS (FastAPI backend)  
-- Evidence audit engine  
-- Investigation workflow system  
-- Governance layer for AI-assisted processes  
-
-Supported environments:
-
-- Azure App Service  
-- Containerized infrastructure (Docker)  
-- Enterprise internal deployments  
-
----
-
-## Quick start
-
-### Installation
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -U pip
-pip install -e .
-```
-
-### CLI usage
-
-```bash
-tcria scan ~/Documents --strict
-```
-
-```bash
-tcria product-audit ~/Documents --strict --output-stem audit
-```
-
-### Full pipeline
-
-```bash
-python3 run_governance_pipeline.py --path ~/Documents --strict --output-stem case_analysis
-```
-
----
-
-## API
-
-Run locally:
-
-```bash
-uvicorn api.api:app --reload
-```
-
-Production:
-
-```bash
-gunicorn -k uvicorn.workers.UvicornWorker api.api:app --bind 0.0.0.0:8000
-```
-
-Main endpoints:
-
-- `POST /audit`
-- `POST /audit/official-pipeline`
-- `POST /cases/run`
-- `POST /investigations/full-run`
-- `POST /conclusions/from-bundle`
-
----
-
-## Use cases
-
-- Legal audits and compliance reviews  
-- Evidence organization for investigations  
-- Controlled preparation of case materials  
-- AI governance and risk mitigation  
-- Institutional documentation pipelines  
-
----
-
-## What TCRIA does NOT do
-
-TCRIA intentionally does not:
-
-- generate legal accusations  
-- produce legal pleadings  
-- create autonomous legal conclusions  
-- replace human legal judgment  
-
-This ensures safe and responsible use in regulated environments.
-
----
-
-## Example decision record
-
-```
-[TCR-IA DECISION RECORD]
-responsibleHuman: Rodrigo Baptista da Silva
-declaredPurpose: Evidence audit and legal documentation structuring
-approved: YES
-approvedAt: 2026-03-05
-[/TCR-IA DECISION RECORD]
-```
-
----
-
-## Architecture overview
-
-- `tcria/` — core engine and governance logic  
-- `api/` — FastAPI service layer  
-- `app/` — application/UI layer  
-- `scripts/` — operational tooling  
-- `docs/` — architecture and documentation  
-- `examples/` — sample inputs and outputs  
-
----
-
-## Strategic positioning
-
-TCRIA is not just a tool — it is a governance layer for AI-assisted legal workflows.
-
-It is designed to support:
-
-- institutional adoption  
-- regulatory alignment  
-- responsible AI usage in legal contexts  
-
----
-
-## License
-
-MIT License
-
----
-
-## Contact / Deployment
-
-For enterprise deployment, SaaS integration, or institutional adoption:
-
-→ Deploy via Azure or internal infrastructure  
-→ Integrate with existing legal workflows  
-→ Extend via API and automation pipelines  
-
----
-
-TCRIA — bringing structure, accountability, and governance to legal evidence systems.
+TCRIA brings structure, accountability, and governance to legal evidence systems, making them more effective and reliable.
