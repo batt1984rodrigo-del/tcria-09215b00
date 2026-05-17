@@ -1,0 +1,42 @@
+{
+  "generated_at": "2026-05-17T00:48:38",
+  "source_audit": "<repo>/examples/institutional-demo-case/output/institutional_demo_strict.json",
+  "blocked_count": 1,
+  "blocked_artifacts_review": [
+    {
+      "file_name": "relatorio_ungoverned_claim.txt",
+      "file_path": "<repo>/examples/institutional-demo-case/input/relatorio_ungoverned_claim.txt",
+      "official_outcome": "BLOCKED (complianceGate)",
+      "blocked_gate": "complianceGate",
+      "blocked_reason": "DecisionRecord header not found in strict mode.",
+      "artifact_identity": {
+        "file_sha256": "f0fbed8211586df29f056900ec4409edfc2cc183d83f12b9b8d40739411e2495",
+        "engine": "tcria",
+        "engine_version": "0.1.0",
+        "gate_policy_version": "unknown",
+        "source_path": "<repo>/examples/institutional-demo-case/input/relatorio_ungoverned_claim.txt"
+      },
+      "diagnostic_guardrails": {
+        "review_mode": "complementary_only",
+        "changes_official_outcome": false,
+        "eligible_for_promotion": false,
+        "requires_human_re_audit_for_status_change": true
+      },
+      "blockedArtifactReview": {
+        "document_kind": "analytical_narrative",
+        "content_summary": "Accusatory terms: fraude=1. Theme entities: bradesco=1. Traceability markers: dates=1, currency=1, pix=1.",
+        "theme_related": true,
+        "organizational_issue": true,
+        "organizational_issue_reasons": [
+          "falta_metadado_governanca",
+          "sem_objetivo_explicito",
+          "sem_autor_responsavel_explicito"
+        ],
+        "traceability_gap_reason": "DecisionRecord header not found in strict mode.",
+        "potential_case_impact": "mixed",
+        "recommended_action": "Add explicit DecisionRecord metadata: responsibleHuman, declaredPurpose, approved."
+      }
+    }
+  ],
+  "note": "Complementary analysis only. Official gate outcomes are preserved."
+}

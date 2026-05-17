@@ -1,0 +1,9 @@
+[TCR-IA DECISION RECORD]
+responsibleHuman: Demo User
+declaredPurpose: Documentary governance demo for legal evidence chain-of-custody
+approved: YES
+approvedAt: 2026-03-08
+[/TCR-IA DECISION RECORD]
+
+Fraude reportada em 05/03/2026 com movimentação PIX de R$ 2.499,90.
+Anexos e comprovantes disponíveis para verificação.

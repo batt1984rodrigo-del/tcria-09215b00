@@ -1,0 +1,23 @@
+{
+  "algorithm": "sha256",
+  "artifacts": [
+    {
+      "artifact_path": "<repo>/examples/institutional-demo-case/output/institutional_demo_strict_governance_events.json",
+      "algorithm": "sha256",
+      "sha256": "2f453d165a6c6842a09cc531fd756580ffd5a125cc125c3b13332375c9a52ecd",
+      "size_bytes": 9945
+    },
+    {
+      "artifact_path": "<repo>/examples/institutional-demo-case/output/institutional_demo_strict_governance_ledger.json",
+      "algorithm": "sha256",
+      "sha256": "5dcb4c950cc2b01664208f6f7c7184df773197cdc11a4c18de20796b5ad0aaf1",
+      "size_bytes": 14428
+    },
+    {
+      "artifact_path": "<repo>/examples/institutional-demo-case/output/institutional_demo_strict_governance_telemetry.json",
+      "algorithm": "sha256",
+      "sha256": "ac57b599d1ca76880916a486569e311e87d0c67aa297bf7465af67ca45fe1d3b",
+      "size_bytes": 3489
+    }
+  ]
+}

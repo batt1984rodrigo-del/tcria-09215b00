@@ -1,0 +1,445 @@
+{
+  "generated_at": "2026-05-17T00:48:38",
+  "audit_basis": "TCRIA modular engine audit (prescriptiveGate, complianceGate, traceabilityCheck)",
+  "input_path": "<repo>/examples/institutional-demo-case/input",
+  "mode": "strict-explicit-decision-record",
+  "compliance_gate_mode": "strict-explicit-decision-record",
+  "total_files_scanned": 2,
+  "accusation_set_count": 1,
+  "classification_counts": {
+    "ACCUSATORY_CANDIDATE": 1,
+    "SUPPORTING_EVIDENCE_RELEVANT": 1
+  },
+  "route_counts": {
+    "CIVIL_CRIMINAL_INVESTIGATIVE": 1,
+    "EVIDENTIARY_SUPPORT_GENERAL": 1
+  },
+  "document_role_counts": {
+    "ANALYTICAL_SUMMARY": 1,
+    "SUPPORTING_PROOF": 1
+  },
+  "accusation_set": [
+    {
+      "file_name": "relatorio_ungoverned_claim.txt",
+      "file_path": "<repo>/examples/institutional-demo-case/input/relatorio_ungoverned_claim.txt",
+      "suffix": ".txt",
+      "size_bytes": 305,
+      "sha256": "f0fbed8211586df29f056900ec4409edfc2cc183d83f12b9b8d40739411e2495",
+      "extraction_status": "ok",
+      "extraction_method": "utf-8-sig",
+      "text_chars": 305,
+      "text_quality": "medium",
+      "sensitive_handling": "normal",
+      "document": {
+        "path": "<repo>/examples/institutional-demo-case/input/relatorio_ungoverned_claim.txt",
+        "relative_path": "relatorio_ungoverned_claim.txt",
+        "suffix": ".txt",
+        "size_bytes": 305,
+        "sha256": "f0fbed8211586df29f056900ec4409edfc2cc183d83f12b9b8d40739411e2495",
+        "text": "Relatorio de investigacao: fraude reportada contra Bradesco em movimentacao PIX de R$ 9.870,00 em 06/03/2026.\nO texto menciona possivel autoria e responsabilizacao, mas nao inclui DecisionRecord.\n\nEste documento existe para demonstrar que o runtime nao promove material sensivel sem governanca explicita.\n",
+        "extraction_status": "ok",
+        "extraction_method": "utf-8-sig"
+      },
+      "classification": "ACCUSATORY_CANDIDATE",
+      "artifact_type": "ANALYTICAL_ARTIFACT",
+      "artifact_type_reason": "Filename matches analytical markers.",
+      "interpretation": {
+        "document_role": {
+          "value": "ANALYTICAL_SUMMARY",
+          "confidence": "MEDIUM",
+          "reasons": [
+            "request_hits=0",
+            "routing_hits=0",
+            "certifying_hits=0",
+            "decision_hits=0",
+            "calculation_hits=0",
+            "evidence_hits=0"
+          ]
+        },
+        "discursive_posture": {
+          "value": "ACCUSATORY",
+          "confidence": "MEDIUM",
+          "reasons": [
+            "Discursive posture is inferential and never treated as objective fact.",
+            "request_hits=0",
+            "defensive_hits=0",
+            "accusation_hits=1",
+            "administrative_charge_hits=0",
+            "legal_basis_hits=0"
+          ]
+        },
+        "rhetorical_tone": {
+          "value": "ANALYTICAL",
+          "confidence": "LOW",
+          "reasons": [
+            "Rhetorical tone is an interpretive aid only and never an objective factual conclusion.",
+            "tone_score=2"
+          ]
+        },
+        "route_selection": {
+          "selected_route": "CIVIL_CRIMINAL_INVESTIGATIVE",
+          "confidence": "HIGH",
+          "reasons": [
+            "Selected route CIVIL_CRIMINAL_INVESTIGATIVE scored 8; runner-up ADMINISTRATIVE_RESTITUTION_ACCOUNTABILITY scored 0.",
+            "Route selection is based on structured comparison of competing semantic hypotheses.",
+            "accusation_hits=1",
+            "investigative_hits=2",
+            "target_hits=1",
+            "evidence_hits=0"
+          ],
+          "runner_up_route": "ADMINISTRATIVE_RESTITUTION_ACCOUNTABILITY",
+          "runner_up_score": 0,
+          "hypotheses": [
+            {
+              "route": "CIVIL_CRIMINAL_INVESTIGATIVE",
+              "score": 8,
+              "reasons": [
+                "accusation_hits=1",
+                "investigative_hits=2",
+                "target_hits=1",
+                "evidence_hits=0"
+              ]
+            },
+            {
+              "route": "ADMINISTRATIVE_RESTITUTION_ACCOUNTABILITY",
+              "score": 0,
+              "reasons": [
+                "restitution_hits=0",
+                "legal_basis_hits=0",
+                "support_hits=0",
+                "admin_hits=0"
+              ]
+            },
+            {
+              "route": "ADMINISTRATIVE_ICMS_SUSPENSION",
+              "score": 0,
+              "reasons": [
+                "suspension_hits=0",
+                "admin_hits=0",
+                "support_hits=0"
+              ]
+            },
+            {
+              "route": "ADMINISTRATIVE_FISCAL_GENERAL",
+              "score": 0,
+              "reasons": [
+                "admin_hits=0",
+                "routing_hits=0",
+                "certifying_hits=0",
+                "support_hits=0"
+              ]
+            },
+            {
+              "route": "EVIDENTIARY_SUPPORT_GENERAL",
+              "score": 0,
+              "reasons": [
+                "evidence_hits=0",
+                "support_hits=0",
+                "calculation_hits=0",
+                "certifying_hits=0"
+              ]
+            }
+          ]
+        },
+        "support_expectation": {
+          "legal_basis_expected": false,
+          "factual_support_expected": false,
+          "traceability_expected": false,
+          "reasons": [
+            "No strong route-specific expectation could be imposed safely."
+          ]
+        },
+        "imputation_profile": {
+          "has_material_imputation": true,
+          "target": "THIRD_PARTY_OR_IDENTIFIED_TARGET",
+          "reasons": [
+            "The text contains accusatory/investigative cues tied to a target or dispute context."
+          ]
+        }
+      },
+      "raises_accusation": true,
+      "classification_reasons": [
+        "Audit route=CIVIL_CRIMINAL_INVESTIGATIVE (HIGH)",
+        "Document role=ANALYTICAL_SUMMARY",
+        "Discursive posture=ACCUSATORY",
+        "High-severity accusation terms=1",
+        "Investigative markers=1",
+        "Target entity hits=1",
+        "Evidence markers=0"
+      ],
+      "key_signals": {
+        "dates_found": 1,
+        "currency_values_found": 1,
+        "transaction_terms": 0,
+        "contains_objetivo_label": false,
+        "contains_autor_label": false,
+        "contains_summary_label": false,
+        "legal_pattern_counts": {
+          "legal_strong": 0,
+          "legal_medium": 0,
+          "accusation": 0
+        },
+        "density_scores": {
+          "legal_refs_density": 0.0,
+          "accusation_density": 0.0
+        },
+        "legal_refs_density": 0.0,
+        "legal_terms_density": 0.0,
+        "accusation_density": 0.0,
+        "pix_mentions": 1,
+        "email_mentions": 0,
+        "accusation_keyword_hits": {
+          "fraude": 1
+        },
+        "evidence_marker_hits": {},
+        "administrative_fiscal_marker_hits": {},
+        "restitution_request_hits": {},
+        "legal_basis_marker_hits": {},
+        "accountability_support_hits": {},
+        "request_argument_hits": {},
+        "defensive_argument_hits": {},
+        "certifying_marker_hits": {},
+        "routing_marker_hits": {},
+        "decision_marker_hits": {},
+        "calculation_marker_hits": {},
+        "investigative_marker_hits": {
+          "investigacao": 1
+        },
+        "administrative_charge_hits": {},
+        "icms_suspension_marker_hits": {},
+        "target_entity_hits": {
+          "bradesco": 1
+        }
+      },
+      "gates": {
+        "prescriptiveGate": {
+          "status": "PASS",
+          "reason": "No prescriptive patterns detected.",
+          "evidence": null
+        },
+        "complianceGate": {
+          "status": "BLOCKED",
+          "reason": "DecisionRecord header not found in strict mode.",
+          "evidence": null
+        },
+        "traceabilityCheck": {
+          "status": "PASS",
+          "reason": "Multiple traceability signals found.",
+          "evidence": "dates=1, currency=1, markers=0"
+        },
+        "maturityGate": {
+          "status": "NOT_EVALUATED",
+          "reason": "KnowledgeCore.maturityScore is not available in static file content.",
+          "evidence": null
+        },
+        "ledgerRuntimeCheck": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Static files do not expose runtime ledger events or hash-chain state.",
+          "evidence": null
+        }
+      },
+      "overall_outcome": "BLOCKED (complianceGate)"
+    }
+  ],
+  "non_accusation_set": [
+    {
+      "file_name": "sample_decision_record.txt",
+      "file_path": "<repo>/examples/institutional-demo-case/input/sample_decision_record.txt",
+      "suffix": ".txt",
+      "size_bytes": 323,
+      "sha256": "4f37ad136ce1d650c25538bcc7f1cfcb85ec4dadee98ab3242ed54e725b95ecc",
+      "extraction_status": "ok",
+      "extraction_method": "utf-8-sig",
+      "text_chars": 318,
+      "text_quality": "medium",
+      "sensitive_handling": "normal",
+      "document": {
+        "path": "<repo>/examples/institutional-demo-case/input/sample_decision_record.txt",
+        "relative_path": "sample_decision_record.txt",
+        "suffix": ".txt",
+        "size_bytes": 323,
+        "sha256": "4f37ad136ce1d650c25538bcc7f1cfcb85ec4dadee98ab3242ed54e725b95ecc",
+        "text": "[TCR-IA DECISION RECORD]\nresponsibleHuman: Demo User\ndeclaredPurpose: Documentary governance demo for legal evidence chain-of-custody\napproved: YES\napprovedAt: 2026-03-08\n[/TCR-IA DECISION RECORD]\n\nFraude reportada em 05/03/2026 com movimentação PIX de R$ 2.499,90.\nAnexos e comprovantes disponíveis para verificação.\n",
+        "extraction_status": "ok",
+        "extraction_method": "utf-8-sig"
+      },
+      "classification": "SUPPORTING_EVIDENCE_RELEVANT",
+      "artifact_type": "DECISION_ARTIFACT",
+      "artifact_type_reason": "Fallback artifact typing.",
+      "interpretation": {
+        "document_role": {
+          "value": "SUPPORTING_PROOF",
+          "confidence": "MEDIUM",
+          "reasons": [
+            "request_hits=0",
+            "routing_hits=0",
+            "certifying_hits=1",
+            "decision_hits=0",
+            "calculation_hits=0",
+            "evidence_hits=5"
+          ]
+        },
+        "discursive_posture": {
+          "value": "ACCUSATORY",
+          "confidence": "LOW",
+          "reasons": [
+            "Discursive posture is inferential and never treated as objective fact.",
+            "request_hits=0",
+            "defensive_hits=0",
+            "accusation_hits=1",
+            "administrative_charge_hits=0",
+            "legal_basis_hits=0"
+          ]
+        },
+        "rhetorical_tone": {
+          "value": "CERTIFYING",
+          "confidence": "LOW",
+          "reasons": [
+            "Rhetorical tone is an interpretive aid only and never an objective factual conclusion.",
+            "tone_score=1"
+          ]
+        },
+        "route_selection": {
+          "selected_route": "EVIDENTIARY_SUPPORT_GENERAL",
+          "confidence": "HIGH",
+          "reasons": [
+            "Selected route EVIDENTIARY_SUPPORT_GENERAL scored 11; runner-up CIVIL_CRIMINAL_INVESTIGATIVE scored 8.",
+            "Route selection is based on structured comparison of competing semantic hypotheses.",
+            "evidence_hits=5",
+            "support_hits=0",
+            "calculation_hits=0",
+            "certifying_hits=1"
+          ],
+          "runner_up_route": "CIVIL_CRIMINAL_INVESTIGATIVE",
+          "runner_up_score": 8,
+          "hypotheses": [
+            {
+              "route": "EVIDENTIARY_SUPPORT_GENERAL",
+              "score": 11,
+              "reasons": [
+                "evidence_hits=5",
+                "support_hits=0",
+                "calculation_hits=0",
+                "certifying_hits=1"
+              ]
+            },
+            {
+              "route": "CIVIL_CRIMINAL_INVESTIGATIVE",
+              "score": 8,
+              "reasons": [
+                "accusation_hits=1",
+                "investigative_hits=0",
+                "target_hits=0",
+                "evidence_hits=5"
+              ]
+            },
+            {
+              "route": "ADMINISTRATIVE_FISCAL_GENERAL",
+              "score": 1,
+              "reasons": [
+                "admin_hits=0",
+                "routing_hits=0",
+                "certifying_hits=1",
+                "support_hits=0"
+              ]
+            },
+            {
+              "route": "ADMINISTRATIVE_RESTITUTION_ACCOUNTABILITY",
+              "score": 0,
+              "reasons": [
+                "restitution_hits=0",
+                "legal_basis_hits=0",
+                "support_hits=0",
+                "admin_hits=0"
+              ]
+            },
+            {
+              "route": "ADMINISTRATIVE_ICMS_SUSPENSION",
+              "score": 0,
+              "reasons": [
+                "suspension_hits=0",
+                "admin_hits=0",
+                "support_hits=0"
+              ]
+            }
+          ]
+        },
+        "support_expectation": {
+          "legal_basis_expected": false,
+          "factual_support_expected": true,
+          "traceability_expected": true,
+          "reasons": [
+            "This role should connect to factual or documentary support within its route.",
+            "This role is expected to preserve process traceability or documentary provenance."
+          ]
+        },
+        "imputation_profile": {
+          "has_material_imputation": true,
+          "target": "DOCUMENT_INTERNAL_ASSERTION",
+          "reasons": [
+            "The text carries contesting or exclusionary assertions without a stable target."
+          ]
+        }
+      },
+      "raises_accusation": false,
+      "classification_reasons": [
+        "Audit route=EVIDENTIARY_SUPPORT_GENERAL (HIGH)",
+        "Document role=SUPPORTING_PROOF",
+        "Discursive posture=ACCUSATORY",
+        "Evidence markers=5",
+        "Accountability support markers=0",
+        "Administrative/fiscal context markers=0"
+      ],
+      "key_signals": {
+        "dates_found": 2,
+        "currency_values_found": 1,
+        "transaction_terms": 0,
+        "contains_objetivo_label": false,
+        "contains_autor_label": false,
+        "contains_summary_label": false,
+        "legal_pattern_counts": {
+          "legal_strong": 0,
+          "legal_medium": 0,
+          "accusation": 0
+        },
+        "density_scores": {
+          "legal_refs_density": 0.0,
+          "accusation_density": 0.0
+        },
+        "legal_refs_density": 0.0,
+        "legal_terms_density": 0.0,
+        "accusation_density": 0.0,
+        "pix_mentions": 1,
+        "email_mentions": 0,
+        "accusation_keyword_hits": {
+          "fraude": 1
+        },
+        "evidence_marker_hits": {
+          "prova": 1,
+          "comprovante": 1,
+          "comprovantes": 1,
+          "anexo": 1,
+          "anexos": 1
+        },
+        "administrative_fiscal_marker_hits": {},
+        "restitution_request_hits": {},
+        "legal_basis_marker_hits": {},
+        "accountability_support_hits": {},
+        "request_argument_hits": {},
+        "defensive_argument_hits": {},
+        "certifying_marker_hits": {
+          "comprovante": 1
+        },
+        "routing_marker_hits": {},
+        "decision_marker_hits": {},
+        "calculation_marker_hits": {},
+        "investigative_marker_hits": {},
+        "administrative_charge_hits": {},
+        "icms_suspension_marker_hits": {},
+        "target_entity_hits": {}
+      },
+      "gates": null,
+      "overall_outcome": null
+    }
+  ]
+}

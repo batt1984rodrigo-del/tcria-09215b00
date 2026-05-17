@@ -1,0 +1,352 @@
+{
+  "ledger_head": "5802e45f5717a069fad5bfb3daa36fbf344cc0e36cfa4cd2d3d0a393346d3aa0",
+  "verified": true,
+  "entries": [
+    {
+      "index": 0,
+      "previous_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "event": {
+        "event_id": "769dcf7a-09d3-4844-95ad-58bc13250930",
+        "schema_version": "governance.event.v1",
+        "event_type": "CHECK_STARTED",
+        "subject": "governance_runtime",
+        "actor": "tcria",
+        "created_at": "2026-05-17T03:48:38+00:00",
+        "payload": {
+          "repo_root": "<repo>",
+          "strict": true,
+          "skip_audit": false,
+          "paths": [
+            "examples/institutional-demo-case/input"
+          ]
+        }
+      },
+      "entry_hash": "4e895947c0857cebe23ee76e01fcfd4404e969b72824df1d70536a114d5f2322"
+    },
+    {
+      "index": 1,
+      "previous_hash": "4e895947c0857cebe23ee76e01fcfd4404e969b72824df1d70536a114d5f2322",
+      "event": {
+        "event_id": "67f08185-4ba7-4569-8f3a-4c3a94961a7d",
+        "schema_version": "governance.event.v1",
+        "event_type": "INGESTION_STARTED",
+        "subject": "governance_runtime",
+        "actor": "tcria",
+        "created_at": "2026-05-17T03:48:38+00:00",
+        "payload": {
+          "paths": [
+            "examples/institutional-demo-case/input"
+          ],
+          "audit_json": null
+        }
+      },
+      "entry_hash": "256a27c6ffd24da594291dcb5f41616efd7b7d04c16e0e296d1d4649a1051fdb"
+    },
+    {
+      "index": 2,
+      "previous_hash": "256a27c6ffd24da594291dcb5f41616efd7b7d04c16e0e296d1d4649a1051fdb",
+      "event": {
+        "event_id": "78105fae-8bce-499f-a7b8-6de2584c3708",
+        "schema_version": "governance.event.v1",
+        "event_type": "INGESTION_COMPLETED",
+        "subject": "governance_runtime",
+        "actor": "tcria",
+        "created_at": "2026-05-17T03:48:38+00:00",
+        "payload": {
+          "input_mode": "source_paths"
+        }
+      },
+      "entry_hash": "beed7ca8dae2495ecda1703d4e838813705b976d69230538d7e3283abc793e08"
+    },
+    {
+      "index": 3,
+      "previous_hash": "beed7ca8dae2495ecda1703d4e838813705b976d69230538d7e3283abc793e08",
+      "event": {
+        "event_id": "ae124b62-d12e-4b4b-938e-46962d817efa",
+        "schema_version": "governance.event.v1",
+        "event_type": "OFFICIAL_AUDIT_STARTED",
+        "subject": "governance_runtime",
+        "actor": "tcria",
+        "created_at": "2026-05-17T03:48:38+00:00",
+        "payload": {
+          "paths": [
+            "examples/institutional-demo-case/input"
+          ],
+          "legacy_audit_script": false
+        }
+      },
+      "entry_hash": "67355070c7302b00e4a9c838693bd6aae1be1df9b5645b3b661096d79a276051"
+    },
+    {
+      "index": 4,
+      "previous_hash": "67355070c7302b00e4a9c838693bd6aae1be1df9b5645b3b661096d79a276051",
+      "event": {
+        "event_id": "13812a4f-7e73-44d5-901e-a07b3755d114",
+        "schema_version": "governance.event.v1",
+        "event_type": "OFFICIAL_AUDIT_COMPLETED",
+        "subject": "governance_runtime",
+        "actor": "tcria",
+        "created_at": "2026-05-17T03:48:38+00:00",
+        "payload": {
+          "audit_json": "<repo>/examples/institutional-demo-case/output/institutional_demo_strict.json",
+          "audit_md": "<repo>/examples/institutional-demo-case/output/institutional_demo_strict.md"
+        }
+      },
+      "entry_hash": "c0c3359cf90734d41d3a19673ac6a07396cf8bfaf2fcdf7bf8071ed64da85c97"
+    },
+    {
+      "index": 5,
+      "previous_hash": "c0c3359cf90734d41d3a19673ac6a07396cf8bfaf2fcdf7bf8071ed64da85c97",
+      "event": {
+        "event_id": "e3141f34-1ab1-4ccf-8b7c-c2b881df5440",
+        "schema_version": "governance.event.v1",
+        "event_type": "COMPLEMENTARY_REVIEW_STARTED",
+        "subject": "governance_runtime",
+        "actor": "tcria",
+        "created_at": "2026-05-17T03:48:38+00:00",
+        "payload": {
+          "audit_json": "<repo>/examples/institutional-demo-case/output/institutional_demo_strict.json",
+          "review_json": "<repo>/examples/institutional-demo-case/output/institutional_demo_strict_blocked_artifacts_review.json",
+          "review_md": "<repo>/examples/institutional-demo-case/output/institutional_demo_strict_blocked_artifacts_review.md"
+        }
+      },
+      "entry_hash": "f4b16415e6b1d88e7210ed0335ebfdffc0c5ac75c7db176a25b34b64aaa7469d"
+    },
+    {
+      "index": 6,
+      "previous_hash": "f4b16415e6b1d88e7210ed0335ebfdffc0c5ac75c7db176a25b34b64aaa7469d",
+      "event": {
+        "event_id": "14af6a37-b971-4406-9a70-41e2795be9c8",
+        "schema_version": "governance.event.v1",
+        "event_type": "COMPLEMENTARY_REVIEW_COMPLETED",
+        "subject": "governance_runtime",
+        "actor": "tcria",
+        "created_at": "2026-05-17T03:48:38+00:00",
+        "payload": {
+          "audit_json": "<repo>/examples/institutional-demo-case/output/institutional_demo_strict.json",
+          "review_json": "<repo>/examples/institutional-demo-case/output/institutional_demo_strict_blocked_artifacts_review.json",
+          "review_md": "<repo>/examples/institutional-demo-case/output/institutional_demo_strict_blocked_artifacts_review.md"
+        }
+      },
+      "entry_hash": "8f4339429b6853bb5f01a581b6877eb35f5d999b0065d06644e8e9ecb6ff66fc"
+    },
+    {
+      "index": 7,
+      "previous_hash": "8f4339429b6853bb5f01a581b6877eb35f5d999b0065d06644e8e9ecb6ff66fc",
+      "event": {
+        "event_id": "0ed97dd4-51a2-496a-9d68-a204d54e7edf",
+        "schema_version": "governance.event.v1",
+        "event_type": "POLICY_EVALUATED",
+        "subject": "governance_runtime",
+        "actor": "tcria",
+        "created_at": "2026-05-17T03:48:38+00:00",
+        "payload": {
+          "record_source_keys": [
+            "accusation_set",
+            "records",
+            "audit_records",
+            "documents",
+            "items"
+          ],
+          "registry": [
+            {
+              "rule_id": "official_blocked_record",
+              "description": "Official audit records with blocked gates cannot be promoted.",
+              "severity": "CRITICAL",
+              "action": "BLOCK_PROMOTION",
+              "escalation": "GOVERNANCE_OWNER"
+            },
+            {
+              "rule_id": "official_warning_record",
+              "description": "Official audit warning outcomes require explicit human attention before promotion.",
+              "severity": "WARN",
+              "action": "REQUIRE_HUMAN_REVIEW",
+              "escalation": "HUMAN_REVIEW"
+            }
+          ],
+          "total_records": 1,
+          "blocked_count": 1,
+          "warning_count": 0,
+          "promotion_blocked": true,
+          "required_actions": [
+            "BLOCK_PROMOTION"
+          ],
+          "escalation": "GOVERNANCE_OWNER",
+          "findings": [
+            {
+              "rule_id": "official_blocked_record",
+              "severity": "CRITICAL",
+              "action": "BLOCK_PROMOTION",
+              "escalation": "GOVERNANCE_OWNER",
+              "subject": {
+                "file_name": "relatorio_ungoverned_claim.txt",
+                "file_path": "<repo>/examples/institutional-demo-case/input/relatorio_ungoverned_claim.txt",
+                "overall_outcome": "BLOCKED (complianceGate)",
+                "blocked_gates": [
+                  "complianceGate"
+                ]
+              },
+              "reason": "Official audit outcome is blocked."
+            }
+          ],
+          "blocked_records": [
+            {
+              "file_name": "relatorio_ungoverned_claim.txt",
+              "file_path": "<repo>/examples/institutional-demo-case/input/relatorio_ungoverned_claim.txt",
+              "overall_outcome": "BLOCKED (complianceGate)",
+              "blocked_gates": [
+                "complianceGate"
+              ]
+            }
+          ]
+        }
+      },
+      "entry_hash": "8d5f804bc2087784c72a855b078648b35f02e8352d9be504123359b05b695e04"
+    },
+    {
+      "index": 8,
+      "previous_hash": "8d5f804bc2087784c72a855b078648b35f02e8352d9be504123359b05b695e04",
+      "event": {
+        "event_id": "5f8b7c61-639b-4276-82f5-9f329afc3c91",
+        "schema_version": "governance.event.v1",
+        "event_type": "PROMOTION_BLOCKED",
+        "subject": "governance_runtime",
+        "actor": "tcria",
+        "created_at": "2026-05-17T03:48:38+00:00",
+        "payload": {
+          "blocked_count": 1,
+          "reason": "One or more official audit records remain blocked."
+        }
+      },
+      "entry_hash": "a21575d4f8ae004b8650faad473e1375ff1a6b12b69c0fa094ab59a51fc7e3a5"
+    },
+    {
+      "index": 9,
+      "previous_hash": "a21575d4f8ae004b8650faad473e1375ff1a6b12b69c0fa094ab59a51fc7e3a5",
+      "event": {
+        "event_id": "f51414c3-2e72-431a-88cf-b74661a76da5",
+        "schema_version": "governance.event.v1",
+        "event_type": "TRACEABILITY_FAILED",
+        "subject": "governance_runtime",
+        "actor": "tcria",
+        "created_at": "2026-05-17T03:48:38+00:00",
+        "payload": {
+          "blocked_count": 1,
+          "reason": "Promotion is blocked until official blocked records are resolved."
+        }
+      },
+      "entry_hash": "68977ee9cc0b8b02ae52e3c203fd62fa74241dae48bb5c54dda88f2a8d18df0a"
+    },
+    {
+      "index": 10,
+      "previous_hash": "68977ee9cc0b8b02ae52e3c203fd62fa74241dae48bb5c54dda88f2a8d18df0a",
+      "event": {
+        "event_id": "156a6ac3-0d26-4b5d-8b4a-9c051eefa119",
+        "schema_version": "governance.event.v1",
+        "event_type": "ARTIFACT_GENERATED",
+        "subject": "governance_runtime",
+        "actor": "tcria",
+        "created_at": "2026-05-17T03:48:38+00:00",
+        "payload": {
+          "artifact_type": "official_audit_json",
+          "artifact_path": "<repo>/examples/institutional-demo-case/output/institutional_demo_strict.json",
+          "artifact_signature": {
+            "artifact_path": "<repo>/examples/institutional-demo-case/output/institutional_demo_strict.json",
+            "algorithm": "sha256",
+            "sha256": "690851c7169dcb5fec3b04c024e08c071fe62f29f57ee924c9fb35152ae3e751",
+            "size_bytes": 15527
+          }
+        }
+      },
+      "entry_hash": "ae43ae3ab6b51675742c32f8c739800dfbee45de420d3934c560b220837394bb"
+    },
+    {
+      "index": 11,
+      "previous_hash": "ae43ae3ab6b51675742c32f8c739800dfbee45de420d3934c560b220837394bb",
+      "event": {
+        "event_id": "29f55850-bf3c-4400-94ce-3d93fa42e6ba",
+        "schema_version": "governance.event.v1",
+        "event_type": "ARTIFACT_GENERATED",
+        "subject": "governance_runtime",
+        "actor": "tcria",
+        "created_at": "2026-05-17T03:48:38+00:00",
+        "payload": {
+          "artifact_type": "official_audit_md",
+          "artifact_path": "<repo>/examples/institutional-demo-case/output/institutional_demo_strict.md",
+          "artifact_signature": {
+            "artifact_path": "<repo>/examples/institutional-demo-case/output/institutional_demo_strict.md",
+            "algorithm": "sha256",
+            "sha256": "d04a5cc78b35d02e055dabb5347f9fe82a5a621800c33790379b3036a4240c85",
+            "size_bytes": 1377
+          }
+        }
+      },
+      "entry_hash": "157a0d5c5928351c2a0f1aa72b5037abea0718d21068a399643a51ce7f9fe638"
+    },
+    {
+      "index": 12,
+      "previous_hash": "157a0d5c5928351c2a0f1aa72b5037abea0718d21068a399643a51ce7f9fe638",
+      "event": {
+        "event_id": "599fd8fb-5d8d-4770-9124-6f3b061d7176",
+        "schema_version": "governance.event.v1",
+        "event_type": "ARTIFACT_GENERATED",
+        "subject": "governance_runtime",
+        "actor": "tcria",
+        "created_at": "2026-05-17T03:48:38+00:00",
+        "payload": {
+          "artifact_type": "blocked_review_json",
+          "artifact_path": "<repo>/examples/institutional-demo-case/output/institutional_demo_strict_blocked_artifacts_review.json",
+          "artifact_signature": {
+            "artifact_path": "<repo>/examples/institutional-demo-case/output/institutional_demo_strict_blocked_artifacts_review.json",
+            "algorithm": "sha256",
+            "sha256": "aca8f2c20aa48f17cac7ddfb128ab66ebac139c6c8fbfc48bdaf7e0710e7d6a4",
+            "size_bytes": 1888
+          }
+        }
+      },
+      "entry_hash": "99d071ff3b2917ad00a6700b1496a35c83b7dcfc296576887e1a73a429733d5f"
+    },
+    {
+      "index": 13,
+      "previous_hash": "99d071ff3b2917ad00a6700b1496a35c83b7dcfc296576887e1a73a429733d5f",
+      "event": {
+        "event_id": "054139ec-f140-453f-9f09-4119252c0dbb",
+        "schema_version": "governance.event.v1",
+        "event_type": "ARTIFACT_GENERATED",
+        "subject": "governance_runtime",
+        "actor": "tcria",
+        "created_at": "2026-05-17T03:48:38+00:00",
+        "payload": {
+          "artifact_type": "blocked_review_md",
+          "artifact_path": "<repo>/examples/institutional-demo-case/output/institutional_demo_strict_blocked_artifacts_review.md",
+          "artifact_signature": {
+            "artifact_path": "<repo>/examples/institutional-demo-case/output/institutional_demo_strict_blocked_artifacts_review.md",
+            "algorithm": "sha256",
+            "sha256": "a62a3330e607729e24dc13ead3c2bb9a5c02e3acd67b5c9c1003610f797c6c10",
+            "size_bytes": 992
+          }
+        }
+      },
+      "entry_hash": "915196b60c8ff0ab5418e0bd6ab84a683ae09ab1870fce6271679177436fec47"
+    },
+    {
+      "index": 14,
+      "previous_hash": "915196b60c8ff0ab5418e0bd6ab84a683ae09ab1870fce6271679177436fec47",
+      "event": {
+        "event_id": "4d3578be-6509-4445-8e12-290696d872f0",
+        "schema_version": "governance.event.v1",
+        "event_type": "RUNTIME_COMPLETED",
+        "subject": "governance_runtime",
+        "actor": "tcria",
+        "created_at": "2026-05-17T03:48:38+00:00",
+        "payload": {
+          "events_json": "<repo>/examples/institutional-demo-case/output/institutional_demo_strict_governance_events.json",
+          "ledger_json": "<repo>/examples/institutional-demo-case/output/institutional_demo_strict_governance_ledger.json",
+          "telemetry_json": "<repo>/examples/institutional-demo-case/output/institutional_demo_strict_governance_telemetry.json",
+          "signatures_json": "<repo>/examples/institutional-demo-case/output/institutional_demo_strict_artifact_signatures.json"
+        }
+      },
+      "entry_hash": "5802e45f5717a069fad5bfb3daa36fbf344cc0e36cfa4cd2d3d0a393346d3aa0"
+    }
+  ]
+}

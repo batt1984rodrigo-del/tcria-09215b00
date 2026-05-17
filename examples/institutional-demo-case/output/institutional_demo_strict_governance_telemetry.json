@@ -1,0 +1,104 @@
+{
+  "started_at": "2026-05-17T03:48:38+00:00",
+  "completed_at": "2026-05-17T03:48:38+00:00",
+  "duration_ms": 32,
+  "event_count": 15,
+  "event_counts": {
+    "ARTIFACT_GENERATED": 4,
+    "CHECK_STARTED": 1,
+    "COMPLEMENTARY_REVIEW_COMPLETED": 1,
+    "COMPLEMENTARY_REVIEW_STARTED": 1,
+    "INGESTION_COMPLETED": 1,
+    "INGESTION_STARTED": 1,
+    "OFFICIAL_AUDIT_COMPLETED": 1,
+    "OFFICIAL_AUDIT_STARTED": 1,
+    "POLICY_EVALUATED": 1,
+    "PROMOTION_BLOCKED": 1,
+    "RUNTIME_COMPLETED": 1,
+    "TRACEABILITY_FAILED": 1
+  },
+  "artifact_count": 8,
+  "artifacts": [
+    "<repo>/examples/institutional-demo-case/output/institutional_demo_strict.json",
+    "<repo>/examples/institutional-demo-case/output/institutional_demo_strict.md",
+    "<repo>/examples/institutional-demo-case/output/institutional_demo_strict_blocked_artifacts_review.json",
+    "<repo>/examples/institutional-demo-case/output/institutional_demo_strict_blocked_artifacts_review.md",
+    "<repo>/examples/institutional-demo-case/output/institutional_demo_strict_governance_ledger.json",
+    "<repo>/examples/institutional-demo-case/output/institutional_demo_strict_governance_events.json",
+    "<repo>/examples/institutional-demo-case/output/institutional_demo_strict_governance_telemetry.json",
+    "<repo>/examples/institutional-demo-case/output/institutional_demo_strict_artifact_signatures.json"
+  ],
+  "state": {
+    "current": "COMPLETED",
+    "history": [
+      "CREATED",
+      "INGESTED",
+      "CLASSIFIED",
+      "UNDER_REVIEW",
+      "POLICY_EVALUATED",
+      "BLOCKED",
+      "COMPLETED"
+    ]
+  },
+  "ledger_head": "5802e45f5717a069fad5bfb3daa36fbf344cc0e36cfa4cd2d3d0a393346d3aa0",
+  "policy_evaluation": {
+    "record_source_keys": [
+      "accusation_set",
+      "records",
+      "audit_records",
+      "documents",
+      "items"
+    ],
+    "registry": [
+      {
+        "rule_id": "official_blocked_record",
+        "description": "Official audit records with blocked gates cannot be promoted.",
+        "severity": "CRITICAL",
+        "action": "BLOCK_PROMOTION",
+        "escalation": "GOVERNANCE_OWNER"
+      },
+      {
+        "rule_id": "official_warning_record",
+        "description": "Official audit warning outcomes require explicit human attention before promotion.",
+        "severity": "WARN",
+        "action": "REQUIRE_HUMAN_REVIEW",
+        "escalation": "HUMAN_REVIEW"
+      }
+    ],
+    "total_records": 1,
+    "blocked_count": 1,
+    "warning_count": 0,
+    "promotion_blocked": true,
+    "required_actions": [
+      "BLOCK_PROMOTION"
+    ],
+    "escalation": "GOVERNANCE_OWNER",
+    "findings": [
+      {
+        "rule_id": "official_blocked_record",
+        "severity": "CRITICAL",
+        "action": "BLOCK_PROMOTION",
+        "escalation": "GOVERNANCE_OWNER",
+        "subject": {
+          "file_name": "relatorio_ungoverned_claim.txt",
+          "file_path": "<repo>/examples/institutional-demo-case/input/relatorio_ungoverned_claim.txt",
+          "overall_outcome": "BLOCKED (complianceGate)",
+          "blocked_gates": [
+            "complianceGate"
+          ]
+        },
+        "reason": "Official audit outcome is blocked."
+      }
+    ],
+    "blocked_records": [
+      {
+        "file_name": "relatorio_ungoverned_claim.txt",
+        "file_path": "<repo>/examples/institutional-demo-case/input/relatorio_ungoverned_claim.txt",
+        "overall_outcome": "BLOCKED (complianceGate)",
+        "blocked_gates": [
+          "complianceGate"
+        ]
+      }
+    ]
+  }
+}

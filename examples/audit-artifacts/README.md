@@ -10,3 +10,7 @@ Purpose:
 - make demos and reviews easier without changing the current architecture.
 
 These files are examples and historical references, not the required runtime location for newly generated outputs.
+
+For the current institutional runtime demonstration, see:
+
+- `examples/institutional-demo-case/`

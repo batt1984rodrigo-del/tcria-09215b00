@@ -5,31 +5,31 @@ title: TCRIA
 
 # TCRIA
 
-Governance system for legal evidence chain-of-custody and auditable document processing pipelines.
+TCRIA is an experimental governance runtime for auditable AI-assisted evidence workflows.
 
----
+Its core rule is simple:
 
-## 🔍 O que é
+> AI does not promote authority without explicit governance.
 
-TCRIA é um sistema de análise, organização e validação de evidências digitais, com foco em rastreabilidade e governança.
+## Start Here
 
----
+- [Architecture](architecture.md)
+- [Institutional demo case](../examples/institutional-demo-case/)
+- [Technical backlog](technical-backlog.md)
+- [Hash trail uniqueness rule](hash-trail-uniqueness-rule.md)
 
-## ⚙️ O que ele faz
+## Runtime Focus
 
-- Processa documentos e dados
-- Gera relatórios auditáveis
-- Organiza evidências por cadeia de custódia
-- Evita uso indevido de informações
+The system centers on:
 
----
+- governance events;
+- formal state transitions;
+- policy-as-code;
+- immutable ledger entries;
+- runtime telemetry;
+- artifact signatures;
+- promotion control.
 
-## 📂 Repositório
+## Repository
 
-👉 https://github.com/batt1984rodrigo-del/tcria-09215b00
-
----
-
-## 🚀 Status
-
-Em desenvolvimento ativo com foco em governança e uso investigativo.
+[github.com/batt1984rodrigo-del/tcria-09215b00](https://github.com/batt1984rodrigo-del/tcria-09215b00)

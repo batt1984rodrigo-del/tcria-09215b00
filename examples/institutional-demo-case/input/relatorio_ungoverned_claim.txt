@@ -1,0 +1,4 @@
+Relatorio de investigacao: fraude reportada contra Bradesco em movimentacao PIX de R$ 9.870,00 em 06/03/2026.
+O texto menciona possivel autoria e responsabilizacao, mas nao inclui DecisionRecord.
+
+Este documento existe para demonstrar que o runtime nao promove material sensivel sem governanca explicita.
