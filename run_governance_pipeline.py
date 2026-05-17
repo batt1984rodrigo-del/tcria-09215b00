@@ -2,12 +2,14 @@
 from __future__ import annotations
 
 import argparse
+import json
 import subprocess
 import sys
 from pathlib import Path
-from typing import Optional
+from typing import Any, Optional
 
 from tcria.engine import TCRIAEngine
+from tcria.runtime import GovernanceEventType, GovernanceRuntime, GovernanceState
 
 
 def run_cmd(cmd: list[str], cwd: Path) -> subprocess.CompletedProcess[str]:
@@ -31,6 +33,13 @@ def default_review_paths(audit_json: Path) -> tuple[Path, Path]:
         parent / f"{stem}_blocked_artifacts_review.json",
         parent / f"{stem}_blocked_artifacts_review.md",
     )
+
+
+def load_json(path: Path) -> dict[str, Any]:
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        raise ValueError(f"Expected object JSON payload: {path}")
+    return data
 
 
 def parse_args() -> argparse.Namespace:
@@ -116,6 +125,25 @@ def parse_args() -> argparse.Namespace:
 def main() -> int:
     args = parse_args()
     repo_root = Path(args.repo_root).expanduser().resolve()
+    runtime = GovernanceRuntime()
+    runtime.record_event(
+        GovernanceEventType.CHECK_STARTED,
+        {
+            "repo_root": str(repo_root),
+            "strict": args.strict,
+            "skip_audit": args.skip_audit,
+            "paths": args.paths or [],
+        },
+    )
+    runtime.record_event(
+        GovernanceEventType.INGESTION_STARTED,
+        {"paths": args.paths or [], "audit_json": args.audit_json},
+    )
+    runtime.record_event(
+        GovernanceEventType.INGESTION_COMPLETED,
+        {"input_mode": "existing_audit_json" if args.skip_audit else "source_paths"},
+    )
+    runtime.transition(GovernanceState.INGESTED)
 
     audit_script = (repo_root / args.audit_script).resolve()
     review_script = (repo_root / args.review_script).resolve()
@@ -132,10 +160,16 @@ def main() -> int:
         if not audit_json.exists():
             raise SystemExit(f"Audit JSON not found: {audit_json}")
         print(f"[pipeline] Official audit skipped. Using: {audit_json}")
+        runtime.record_event(GovernanceEventType.OFFICIAL_AUDIT_SKIPPED, {"audit_json": str(audit_json)})
+        runtime.transition(GovernanceState.CLASSIFIED)
     else:
         if not args.paths:
             raise SystemExit("At least one --path is required unless --skip-audit is used.")
         print("[pipeline] Running official audit...")
+        runtime.record_event(
+            GovernanceEventType.OFFICIAL_AUDIT_STARTED,
+            {"paths": args.paths or [], "legacy_audit_script": args.legacy_audit_script},
+        )
         if args.legacy_audit_script:
             if not audit_script.exists():
                 raise SystemExit(f"Audit script not found: {audit_script}")
@@ -183,6 +217,14 @@ def main() -> int:
 
         if not audit_json.exists():
             raise SystemExit(f"Official audit JSON was reported but not found: {audit_json}")
+        runtime.record_event(
+            GovernanceEventType.OFFICIAL_AUDIT_COMPLETED,
+            {
+                "audit_json": str(audit_json),
+                "audit_md": str(audit_md) if audit_md else None,
+            },
+        )
+        runtime.transition(GovernanceState.CLASSIFIED)
 
     review_json_out: Path
     review_md_out: Path
@@ -196,6 +238,11 @@ def main() -> int:
     review_md_out.parent.mkdir(parents=True, exist_ok=True)
 
     print("[pipeline] Running complementary blocked review...")
+    runtime.transition(GovernanceState.UNDER_REVIEW)
+    runtime.record_event(
+        GovernanceEventType.COMPLEMENTARY_REVIEW_STARTED,
+        {"audit_json": str(audit_json), "review_json": str(review_json_out), "review_md": str(review_md_out)},
+    )
     review_cmd = [
         sys.executable,
         str(review_script),
@@ -207,6 +254,31 @@ def main() -> int:
     ]
     review_cp = run_cmd(review_cmd, cwd=repo_root)
     print(review_cp.stdout, end="")
+    runtime.record_event(
+        GovernanceEventType.COMPLEMENTARY_REVIEW_COMPLETED,
+        {"audit_json": str(audit_json), "review_json": str(review_json_out), "review_md": str(review_md_out)},
+    )
+
+    audit_bundle = load_json(audit_json)
+    policy_evaluation = runtime.evaluate_policies(audit_bundle)
+    if policy_evaluation.promotion_blocked:
+        runtime.record_event(
+            GovernanceEventType.TRACEABILITY_FAILED,
+            {
+                "blocked_count": policy_evaluation.blocked_count,
+                "reason": "Promotion is blocked until official blocked records are resolved.",
+            },
+        )
+
+    runtime.record_artifact(audit_json, artifact_type="official_audit_json")
+    if audit_md:
+        runtime.record_artifact(audit_md, artifact_type="official_audit_md")
+    runtime.record_artifact(review_json_out, artifact_type="blocked_review_json")
+    runtime.record_artifact(review_md_out, artifact_type="blocked_review_md")
+    runtime_artifacts = runtime.write_runtime_artifacts(
+        review_json_out.parent,
+        output_stem=audit_json.stem,
+    )
 
     print("[pipeline] Completed")
     print(f"[pipeline] Official audit JSON: {audit_json}")
@@ -214,6 +286,9 @@ def main() -> int:
         print(f"[pipeline] Official audit MD: {audit_md}")
     print(f"[pipeline] Blocked review JSON: {review_json_out}")
     print(f"[pipeline] Blocked review MD: {review_md_out}")
+    print(f"[pipeline] Governance events JSON: {runtime_artifacts['events_json']}")
+    print(f"[pipeline] Governance ledger JSON: {runtime_artifacts['ledger_json']}")
+    print(f"[pipeline] Governance telemetry JSON: {runtime_artifacts['telemetry_json']}")
     print(
         "[pipeline] Guardrails: complementary-only diagnostics; official outcomes are preserved and not promoted by this layer."
     )
