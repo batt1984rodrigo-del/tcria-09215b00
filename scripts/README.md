@@ -10,3 +10,5 @@ Use this area for:
 - legacy-compatible operational entrypoints.
 
 The intent is to keep script-style tools visually separate from the main application package while preserving the current architecture and working style.
+
+Root-level Python should stay limited to primary application entrypoints such as `app.py` and `run_governance_pipeline.py`. New operator utilities should be added here, while reusable product logic should move into `tcria/`.

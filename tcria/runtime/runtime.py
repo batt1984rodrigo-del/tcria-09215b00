@@ -7,6 +7,7 @@ from typing import Any
 from tcria.runtime.events import GovernanceEvent, GovernanceEventType
 from tcria.runtime.ledger import GovernanceLedger
 from tcria.runtime.policies import GovernancePolicyEngine, PolicyEvaluation
+from tcria.runtime.signatures import sign_artifact
 from tcria.runtime.state import GovernanceState, GovernanceStateMachine
 from tcria.runtime.telemetry import RuntimeTelemetry
 
@@ -34,9 +35,14 @@ class GovernanceRuntime:
         return event
 
     def record_artifact(self, artifact_path: str | Path, *, artifact_type: str) -> GovernanceEvent:
+        signature = sign_artifact(artifact_path)
         return self.record_event(
             GovernanceEventType.ARTIFACT_GENERATED,
-            {"artifact_type": artifact_type, "artifact_path": str(artifact_path)},
+            {
+                "artifact_type": artifact_type,
+                "artifact_path": signature.artifact_path,
+                "artifact_signature": signature.to_dict(),
+            },
         )
 
     def evaluate_policies(self, audit_bundle: dict[str, Any]) -> PolicyEvaluation:
@@ -67,10 +73,12 @@ class GovernanceRuntime:
         events_path = output_path / f"{output_stem}_governance_events.json"
         ledger_path = output_path / f"{output_stem}_governance_ledger.json"
         telemetry_path = output_path / f"{output_stem}_governance_telemetry.json"
+        signatures_path = output_path / f"{output_stem}_artifact_signatures.json"
 
         events_payload = [event.to_dict() for event in self.events]
         ledger_payload = {
             "ledger_head": self.ledger.current_hash,
+            "verified": self.ledger.verify(),
             "entries": self.ledger.to_list(),
         }
         telemetry_payload = self.telemetry.collect(
@@ -90,6 +98,7 @@ class GovernanceRuntime:
                 "events_json": str(events_path),
                 "ledger_json": str(ledger_path),
                 "telemetry_json": str(telemetry_path),
+                "signatures_json": str(signatures_path),
             },
         )
         self.transition(GovernanceState.COMPLETED)
@@ -97,6 +106,7 @@ class GovernanceRuntime:
         events_payload = [event.to_dict() for event in self.events]
         ledger_payload = {
             "ledger_head": self.ledger.current_hash,
+            "verified": self.ledger.verify(),
             "entries": self.ledger.to_list(),
         }
         telemetry_payload = self.telemetry.collect(
@@ -108,9 +118,19 @@ class GovernanceRuntime:
         events_path.write_text(json.dumps(events_payload, ensure_ascii=False, indent=2), encoding="utf-8")
         ledger_path.write_text(json.dumps(ledger_payload, ensure_ascii=False, indent=2), encoding="utf-8")
         telemetry_path.write_text(json.dumps(telemetry_payload, ensure_ascii=False, indent=2), encoding="utf-8")
+        signatures_payload = {
+            "algorithm": "sha256",
+            "artifacts": [
+                sign_artifact(events_path).to_dict(),
+                sign_artifact(ledger_path).to_dict(),
+                sign_artifact(telemetry_path).to_dict(),
+            ],
+        }
+        signatures_path.write_text(json.dumps(signatures_payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
         return {
             "events_json": str(events_path),
             "ledger_json": str(ledger_path),
             "telemetry_json": str(telemetry_path),
+            "signatures_json": str(signatures_path),
         }

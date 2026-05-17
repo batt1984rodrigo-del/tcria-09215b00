@@ -108,7 +108,7 @@ Validates evidence anchors, references, and traceability signals.
 
 ### `ledgerRuntimeCheck`
 
-Future runtime verification layer for immutable audit events and governance ledgers.
+Runtime verification layer for immutable audit events, hash-chain ledgers, and signed artifacts.
 
 ---
 
@@ -134,6 +134,8 @@ This allows:
 - compliance-aware workflows
 - human validation checkpoints
 - policy-based execution
+- immutable event chains
+- artifact signatures
 
 ---
 
@@ -150,6 +152,7 @@ Example:
   "official_outcome": "BLOCKED (complianceGate)",
   "blocked_reason": "DecisionRecord header not found in strict mode."
 }
+```
 
 This behavior is intentional and reflects the platform's governance-first architecture.
 
@@ -165,6 +168,14 @@ Application runtime and orchestration layer.
 tcria/
 
 Core governance engine and domain logic.
+
+tcria/runtime/
+
+Governance runtime core: events, state, policies, ledger, signatures, telemetry, and orchestration.
+
+scripts/
+
+Operational helpers and legacy-compatible generators.
 
 docs/
 
@@ -182,6 +193,7 @@ Governance Documentation
 
 The repository includes explicit governance specifications:
 
+docs/architecture.md
 GOVERNANCE.md
 GOVERNANCE_CORE_RULESET.md
 VERSION_MANIFEST.md
@@ -210,11 +222,11 @@ policy-driven execution
 enterprise compliance workflows
 traceable AI pipelines
 signed governance artifacts
+
 Future Roadmap
 Governance Runtime
-policy engine
-governance state machine
-escalation workflows
+policy engine registries
+severity/action/escalation workflows
 promotion lifecycle
 Enterprise Readiness
 RBAC

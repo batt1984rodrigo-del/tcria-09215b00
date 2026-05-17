@@ -27,16 +27,11 @@ tcria = "tcria.cli:main"
 [tool.setuptools]
 py-modules = [
   "run_governance_pipeline",
-  "generate_blocked_artifacts_review",
-  "generate_case_preparation_summary",
-  "generate_case_timeline",
-  "generate_unified_governance_report_pdf",
-  "generate_investigation_report",
 ]
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["tcria*"]
+include = ["tcria*", "scripts"]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]

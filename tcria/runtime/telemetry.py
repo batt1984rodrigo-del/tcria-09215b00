@@ -16,6 +16,7 @@ ARTIFACT_PAYLOAD_KEYS = (
     "ledger_json",
     "events_json",
     "telemetry_json",
+    "signatures_json",
 )
 
 

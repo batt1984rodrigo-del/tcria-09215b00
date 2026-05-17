@@ -53,6 +53,15 @@ class GovernanceLedger:
     def to_list(self) -> list[dict[str, Any]]:
         return [entry.to_dict() for entry in self.entries]
 
+    def verify(self) -> bool:
+        previous_hash = GENESIS_HASH
+        for entry in self.entries:
+            expected_hash = self._hash_entry(previous_hash, entry.event)
+            if entry.previous_hash != previous_hash or entry.entry_hash != expected_hash:
+                return False
+            previous_hash = entry.entry_hash
+        return True
+
     @staticmethod
     def _hash_entry(previous_hash: str, event_payload: dict[str, Any]) -> str:
         canonical = json.dumps(

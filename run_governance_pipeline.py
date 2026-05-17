@@ -42,6 +42,16 @@ def load_json(path: Path) -> dict[str, Any]:
     return data
 
 
+def resolve_repo_script(repo_root: Path, script_arg: str) -> Path:
+    script_path = Path(script_arg).expanduser()
+    if script_path.is_absolute():
+        return script_path.resolve()
+    root_candidate = (repo_root / script_path).resolve()
+    if root_candidate.exists():
+        return root_candidate
+    return (repo_root / "scripts" / script_path).resolve()
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Run official audit and complementary blocked-artifact review as a two-layer governance pipeline."
@@ -58,7 +68,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--audit-script",
-        default="audit_accusation_bundle_with_tcr_gateway.py",
+        default="scripts/audit_accusation_bundle_with_tcr_gateway.py",
         help="Path (relative to repo root) for official audit script (legacy mode).",
     )
     parser.add_argument(
@@ -68,7 +78,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--review-script",
-        default="generate_blocked_artifacts_review.py",
+        default="scripts/generate_blocked_artifacts_review.py",
         help="Path (relative to repo root) for complementary blocked review script.",
     )
     parser.add_argument(
@@ -145,8 +155,8 @@ def main() -> int:
     )
     runtime.transition(GovernanceState.INGESTED)
 
-    audit_script = (repo_root / args.audit_script).resolve()
-    review_script = (repo_root / args.review_script).resolve()
+    audit_script = resolve_repo_script(repo_root, args.audit_script)
+    review_script = resolve_repo_script(repo_root, args.review_script)
     if not review_script.exists():
         raise SystemExit(f"Review script not found: {review_script}")
 
@@ -289,6 +299,7 @@ def main() -> int:
     print(f"[pipeline] Governance events JSON: {runtime_artifacts['events_json']}")
     print(f"[pipeline] Governance ledger JSON: {runtime_artifacts['ledger_json']}")
     print(f"[pipeline] Governance telemetry JSON: {runtime_artifacts['telemetry_json']}")
+    print(f"[pipeline] Artifact signatures JSON: {runtime_artifacts['signatures_json']}")
     print(
         "[pipeline] Guardrails: complementary-only diagnostics; official outcomes are preserved and not promoted by this layer."
     )

@@ -24,12 +24,16 @@ def _first_existing(*paths: Path) -> Path:
     return paths[0]
 
 
-PREPARATION_SCRIPT = REPO_ROOT / "generate_case_preparation_summary.py"
-TIMELINE_SCRIPT = REPO_ROOT / "generate_case_timeline.py"
-UNIFIED_PDF_SCRIPT = REPO_ROOT / "generate_unified_governance_report_pdf.py"
+def _script_path(name: str) -> Path:
+    return _first_existing(REPO_ROOT / "scripts" / name, REPO_ROOT / name)
+
+
+PREPARATION_SCRIPT = _script_path("generate_case_preparation_summary.py")
+TIMELINE_SCRIPT = _script_path("generate_case_timeline.py")
+UNIFIED_PDF_SCRIPT = _script_path("generate_unified_governance_report_pdf.py")
 INVESTIGATION_SCRIPT = _first_existing(
-    REPO_ROOT / "generate_investigation_report.py",
     REPO_ROOT / "scripts" / "generate_investigation_report.py",
+    REPO_ROOT / "generate_investigation_report.py",
 )
 
 
