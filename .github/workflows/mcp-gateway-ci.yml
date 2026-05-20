@@ -1,0 +1,37 @@
+name: MCP Gateway CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [feature/tcria-mcp-server]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Validate MCP gateway imports
+        run: |
+          python -c "import api.mcp_gateway"
+
+      - name: Validate MCP server imports
+        run: |
+          python -c "import mcp_server"
+
+      - name: Validate FastAPI app startup
+        run: |
+          python -c "from api.mcp_gateway import app; print(app.title)"

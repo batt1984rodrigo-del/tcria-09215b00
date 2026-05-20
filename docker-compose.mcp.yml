@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  tcria-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile.mcp
+    container_name: tcria-mcp-gateway
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      TCRIA_MCP_REQUIRE_AUTH: "true"
+      TCRIA_MCP_JWT_SECRET: "change-this-secret"
+      TCRIA_MCP_SIGNING_SECRET: "change-this-signing-secret"
+      TCRIA_MCP_PUBLIC_URL: "http://localhost:8000/mcp"
+    volumes:
+      - ./output:/app/output

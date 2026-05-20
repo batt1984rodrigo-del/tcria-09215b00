@@ -1,0 +1,50 @@
+{
+  "family": "tcria-mcp-gateway",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024",
+  "executionRoleArn": "arn:aws:iam::123456789012:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "tcria-mcp-gateway",
+      "image": "tcria-mcp-gateway:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 8000,
+          "hostPort": 8000,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        {
+          "name": "TCRIA_MCP_REQUIRE_AUTH",
+          "value": "true"
+        },
+        {
+          "name": "TCRIA_OTEL_ENABLED",
+          "value": "true"
+        }
+      ],
+      "secrets": [
+        {
+          "name": "TCRIA_MCP_JWT_SECRET",
+          "valueFrom": "arn:aws:ssm:region:account-id:parameter/tcria/jwt-secret"
+        },
+        {
+          "name": "TCRIA_MCP_SIGNING_SECRET",
+          "valueFrom": "arn:aws:ssm:region:account-id:parameter/tcria/signing-secret"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/tcria-mcp-gateway",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}

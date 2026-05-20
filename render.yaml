@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: tcria-mcp-gateway
+    runtime: docker
+    dockerfilePath: ./Dockerfile.mcp
+    autoDeploy: true
+    healthCheckPath: /health
+    envVars:
+      - key: TCRIA_MCP_REQUIRE_AUTH
+        value: true
+      - key: TCRIA_MCP_PUBLIC_URL
+        sync: false
+      - key: TCRIA_MCP_JWT_SECRET
+        sync: false
+      - key: TCRIA_MCP_SIGNING_SECRET
+        sync: false
