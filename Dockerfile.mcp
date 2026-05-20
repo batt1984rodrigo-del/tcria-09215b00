@@ -12,6 +12,8 @@ RUN apt-get update \
 
 COPY . .
 
+COPY requirements.txt ./
+COPY . .
 RUN pip install --upgrade pip \
     && pip install -r requirements.txt
 
