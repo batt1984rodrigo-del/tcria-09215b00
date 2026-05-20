@@ -11,10 +11,9 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt ./
+COPY . .
 RUN pip install --upgrade pip \
     && pip install -r requirements.txt
-
-COPY . .
 
 EXPOSE 8000
 
