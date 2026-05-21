@@ -226,11 +226,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-curl -X POST http://127.0.0.1:8000/responses/audit \
-  -H "Content-Type: application/json" \
-  -d '{
-    "path": "/caminho/do/acervo",
-    "strict": true,
-    "audit_type": "civil_criminal_investigative",
-    "model": "gpt-4.1-mini"
-  }'
