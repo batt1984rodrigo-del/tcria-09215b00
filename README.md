@@ -272,7 +272,206 @@ responsible AI systems
 
 are welcome.
 
-See CONTRIBUTING.md.
+See CONTRIBUTING.md.## Deployment Architecture
+
+TCRIA supports multiple deployment targets and governance runtime configurations.
+
+The platform is designed to operate as a distributed governance system capable of orchestrating:
+
+- governance-aware AI pipelines
+- audit artifact generation
+- MCP runtime integrations
+- traceability validation
+- compliance enforcement
+- evidence processing workflows
+
+---
+
+## Current Deployment Layers
+
+| Layer | Responsibility |
+|---|---|
+| Web UI | Governance dashboards and visualization |
+| Governance API | Responses API orchestration and governance enforcement |
+| MCP Gateway | Model Context Protocol runtime integration |
+| Audit Runtime | Audit artifact generation and traceability validation |
+| Governance Engine | Policy enforcement and compliance gates |
+
+---
+
+## Supported Deployment Targets
+
+| Platform | Purpose |
+|---|---|
+| GitHub Pages | Static web interface |
+| Railway | Governance API runtime and orchestration |
+| Render | Alternative deployment runtime |
+| Docker Compose | Local governance and MCP runtime |
+| Codespaces / Dev Containers | Development environment |
+
+---
+
+## Runtime Components
+
+### Governance API
+
+Primary orchestration layer responsible for:
+
+- Responses API integration
+- governance validation
+- policy enforcement
+- compliance gate execution
+- evidence routing
+- audit trace generation
+
+Main files:
+
+```text
+app.py
+api/
+run_governance_pipeline.py
+```
+
+---
+
+### MCP Gateway Runtime
+
+TCRIA includes enterprise-oriented MCP integration for controlled AI orchestration.
+
+The MCP layer enables:
+
+- governance-aware model routing
+- controlled context propagation
+- auditable orchestration
+- runtime supervision
+- traceability-aware execution
+
+Main files:
+
+```text
+mcp_server.py
+Dockerfile.mcp
+docker-compose.mcp.yml
+.env.mcp.example
+MCP_OPENAI_SETUP.md
+```
+
+---
+
+## Local Development Execution
+
+### Clone Repository
+
+```bash
+git clone https://github.com/batt1984rodrigo-del/tcria-09215b00.git
+cd tcria-09215b00
+```
+
+### Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Configure Environment
+
+```bash
+cp .env.example .env
+cp .env.mcp.example .env.mcp
+```
+
+Required environment variables typically include:
+
+```env
+OPENAI_API_KEY=your_api_key
+OPENAI_MODEL=gpt-4.1
+```
+
+---
+
+## Running the Governance Runtime
+
+### Standard Governance Pipeline
+
+```bash
+python run_governance_pipeline.py
+```
+
+### API Runtime
+
+```bash
+python app.py
+```
+
+Depending on the API implementation:
+
+```bash
+uvicorn api.main:app --reload
+```
+
+---
+
+## MCP Runtime Execution
+
+### Docker Compose
+
+```bash
+docker compose -f docker-compose.mcp.yml up
+```
+
+This runtime may include:
+
+- governance API services
+- MCP gateway services
+- orchestration runtime
+- audit processing services
+
+---
+
+## Deployment Observability
+
+The repository currently includes:
+
+- multiple deployment environments
+- Railway deployment configuration
+- Render deployment configuration
+- GitHub Pages deployment
+- containerized MCP runtime
+- release artifacts
+- governance runtime orchestration
+
+Deployment metadata can be inspected from the repository deployment history.
+
+---
+
+## Enterprise Runtime Direction
+
+TCRIA is evolving toward enterprise governance infrastructure with:
+
+- RBAC
+- tenant isolation
+- immutable audit ledgers
+- signed governance artifacts
+- governance state machines
+- escalation workflows
+- structured audit telemetry
+- ledger-backed traceability
+
+---
+
+## Operational Philosophy
+
+TCRIA follows a governance-first operational model.
+
+AI orchestration is always subordinated to:
+
+- compliance requirements
+- human accountability
+- traceability enforcement
+- governance validation
+- promotion safety controls
+
+The runtime is intentionally designed to block unsafe or non-governed automation paths.
 
 Vision
 
