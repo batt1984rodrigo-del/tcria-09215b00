@@ -432,30 +432,63 @@ This runtime may include:
 
 The repository currently includes:
 
-- multiple deployment environments
-- Railway deployment configuration
-- Render deployment configuration
-- GitHub Pages deployment
-- containerized MCP runtime
-- release artifacts
-- governance runtime orchestration
+- multi-environment deployment support
 
-Deployment metadata can be inspected from the repository deployment history.
+- Railway deployment configuration
+
+- Render deployment configuration
+
+- GitHub Pages deployment pipelines
+
+- containerized MCP runtime execution
+
+- automated release artifacts
+
+- governance orchestration workflows
+
+- runtime observability foundations
+
+- deployment lifecycle traceability
+
+Deployment metadata, release activity, and runtime execution history can be inspected through the repository deployment records and CI/CD workflows.
 
 ---
 
 ## Enterprise Runtime Direction
 
-TCRIA is evolving toward enterprise governance infrastructure with:
+TCRIA is evolving toward an enterprise-grade governance infrastructure focused on operational accountability, compliance orchestration, and audit integrity.
 
-- RBAC
-- tenant isolation
+Current and planned governance capabilities include:
+
+- role-based access control (RBAC)
+
+- tenant isolation architecture
+
 - immutable audit ledgers
+
 - signed governance artifacts
+
 - governance state machines
-- escalation workflows
+
+- escalation and approval workflows
+
 - structured audit telemetry
+
 - ledger-backed traceability
+
+- policy-driven execution controls
+
+- runtime governance enforcement
+
+- compliance-oriented orchestration
+
+- evidence preservation pipelines
+
+- governance event correlation
+
+- operational chain-of-custody tracking
+
+- audit-ready execution reporting
 
 ---
 
