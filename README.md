@@ -1,8 +1,8 @@
-# TCRIA — AI Governance Platform for Legal Evidence and Auditability
+grenagem# TCRIA — AI Governance Platform for Legal Evidence and Auditability
 
 TCRIA is a governance-oriented AI platform designed for legal evidence processing, chain-of-custody validation, and auditable document workflows.
 
-The platform enables organizations to structure, analyze, audit, and validate complex evidence collections while preserving explicit human accountability over legal conclusions and high-risk decisions.
+The platform enables organizations to structure, analyze, audit, and validate complex evidence collections while preserving explicit human accountability over legal conclusions and high-risk decisions.quefazosaasfuncionar
 
 ---
 
