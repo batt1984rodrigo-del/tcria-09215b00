@@ -5,9 +5,6 @@
 name: Build and deploy Python app to Azure Web App - tcria-09215b00
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:

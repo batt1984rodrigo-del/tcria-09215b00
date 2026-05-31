@@ -1,9 +1,7 @@
 name: Deploy to Staging
 
 on:
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   deploy_pr_to_staging:
@@ -11,10 +9,9 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
 
       - name: Deploy to Staging
         run: |
-          echo "Iniciando deploy para staging."
-          # Adicione comandos de deploy aqui
-          echo "Deploy para staging concluído."
+          echo "Workflow manual preservado."
+          echo "Se houver um deploy de staging real, ele deve ser implementado aqui antes do uso."
