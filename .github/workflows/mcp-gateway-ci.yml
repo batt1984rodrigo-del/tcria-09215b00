@@ -1,37 +1,14 @@
 name: MCP Gateway CI
 
 on:
-  pull_request:
-    branches: [main]
-  push:
-    branches: [feature/tcria-mcp-server]
+  workflow_dispatch:
 
 jobs:
-  validate:
+  archived:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
-
-      - name: Setup Python
-        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
-        with:
-          python-version: '3.12'
-
-      - name: Install dependencies
+      - name: Archived workflow notice
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: Validate MCP gateway imports
-        run: |
-          python -c "import api.mcp_gateway"
-
-      - name: Validate MCP server imports
-        run: |
-          python -c "import mcp_server"
-
-      - name: Validate FastAPI app startup
-        run: |
-          python -c "from api.mcp_gateway import app; print(app.title)"
+          echo "MCP validation was consolidated into .github/workflows/main.yml."
+          echo "Use the canonical CI workflow for dependency installation, tests, MCP validation, and container smoke checks."

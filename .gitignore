@@ -16,6 +16,10 @@ cases/
 *.zip
 .env
 
+# JavaScript
+node_modules/
+.next/
+
 # Generated governance artifacts (can contain sensitive paths/data)
 tcr_gateway_*.json
 tcr_gateway_*.md

@@ -34,6 +34,11 @@ jobs:
         run: |
           pytest -q
 
+      - name: Validate MCP adapters
+        run: |
+          python -c "import mcp_server"
+          python -c "from api.mcp_gateway import app; print(app.title)"
+
       - name: Build Docker image (MCP)
         run: |
           docker build -f Dockerfile.mcp -t tcria:mcp-ci .
