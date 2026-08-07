@@ -1,4 +1,4 @@
-name: MCP Gateway CI (archived)
+name: MCP Gateway CI (archived) (archived)
 
 on:
   workflow_dispatch:

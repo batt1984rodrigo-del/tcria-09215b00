@@ -34,7 +34,7 @@ jobs:
         run: |
           pytest -q
 
-      - name: Validate MCP adapters
+      - name: Validate MCP server and gateway imports
         run: |
           python -c "import mcp_server"
           python -c "from api.mcp_gateway import app; print(app.title)"
