@@ -1,518 +1,797 @@
-grenagem# TCRIA — AI Governance Platform for Legal Evidence and Auditability
-
-TCRIA is a governance-oriented AI platform designed for legal evidence processing, chain-of-custody validation, and auditable document workflows.
-
-The platform enables organizations to structure, analyze, audit, and validate complex evidence collections while preserving explicit human accountability over legal conclusions and high-risk decisions.quefazosaasfuncionar
-
----
-
-# Why TCRIA Exists
-
-Modern AI systems can process legal and investigative information at scale, but most solutions fail to provide:
-
-- governance boundaries
-- traceability
-- auditability
-- accountability enforcement
-- evidentiary integrity
-- safe promotion controls
-
-TCRIA was created to solve this problem.
-
-Instead of replacing legal judgment, TCRIA introduces a controlled governance runtime that supervises how evidence, investigative artifacts, and AI-generated outputs are processed and promoted.
-
----
-
-# Core Principles
-
-TCRIA is built around five core governance principles:
-
-## Human Accountability
-
-No legal or accusatory conclusion should be promoted without explicit human responsibility metadata.
-
-## Auditability
-
-All outputs must remain reviewable, explainable, and traceable.
-
-## Chain-of-Custody Preservation
-
-Evidence lineage and artifact integrity must remain verifiable throughout the pipeline.
-
-## Governance Before Automation
-
-Automation is allowed only when governance policies are satisfied.
-
-## Safe AI Orchestration
-
-The system prevents unsafe or non-governed promotion of sensitive outputs.
-
----
-
-# What TCRIA Does
-
-TCRIA provides a modular governance engine capable of:
-
-- Processing legal and investigative evidence
-- Structuring document collections
-- Detecting governance gaps
-- Enforcing compliance gates
-- Generating auditable artifacts
-- Producing governance-aware reports
-- Preserving evidence traceability
-- Blocking unsafe promotion paths
-
----
-
-# Main Capabilities
-
-## Evidence Ingestion
-
-Supports ingestion of:
-
-- PDF files
-- HTML artifacts
-- investigative records
-- legal decisions
-- structured evidence collections
-
----
-
-## Semantic Governance Classification
-
-The engine classifies documents using governance-aware interpretation layers:
-
-- document role
-- discursive posture
-- route selection
-- rhetorical tone
-- imputation profile
-
----
-
-## Governance Gates
-
-TCRIA includes multiple governance enforcement layers:
-
-### `prescriptiveGate`
-
-Detects unsafe prescriptive or accusatory automation patterns.
-
-### `complianceGate`
-
-Requires explicit governance metadata before promotion.
-
-### `traceabilityCheck`
-
-Validates evidence anchors, references, and traceability signals.
-
-### `ledgerRuntimeCheck`
-
-Future runtime verification layer for immutable audit events and governance ledgers.
-
----
-
-## Audit Artifact Generation
-
-TCRIA can generate:
-
-- JSON governance artifacts
-- Markdown audit reports
-- PDF audit summaries
-- traceability reports
-- blocked artifact reviews
-
----
-
-## Governance Runtime
-
-The platform introduces governance-aware orchestration instead of unrestricted automation.
-
-This allows:
-
-- controlled evidence promotion
-- compliance-aware workflows
-- human validation checkpoints
-- policy-based execution
-
----
-
-# Example Governance Behavior
-
-TCRIA does not automatically approve sensitive legal material.
-
-A document may be semantically valid and still be blocked if governance metadata is missing.
-
-Example:
-
-```json
-{
-  "official_outcome": "BLOCKED (complianceGate)",
-  "blocked_reason": "DecisionRecord header not found in strict mode."
-}
-
-This behavior is intentional and reflects the platform's governance-first architecture.
-
-Repository Structure
-api/
-
-REST endpoints, request models, and governance integration APIs.
-
-app/
-
-Application runtime and orchestration layer.
-
-tcria/
-
-Core governance engine and domain logic.
-
-docs/
-
-Governance documentation, architecture references, and operational policies.
-
-web/
-
-Web interface and visualization layer.
-
-tests/
-
-Validation and governance testing suite.
-
-Governance Documentation
-
-The repository includes explicit governance specifications:
-
-GOVERNANCE.md
-GOVERNANCE_CORE_RULESET.md
-VERSION_MANIFEST.md
-
-These documents define operational boundaries, governance expectations, and audit assumptions.
-
-Use Cases
-
-TCRIA can support:
-
-legal evidence review
-compliance operations
-institutional investigations
-governance pipelines
-audit preparation
-public sector workflows
-AI risk management
-regulated document processing
-Current Technical Focus
-
-The project is evolving toward:
-
-governance runtime orchestration
-immutable audit ledgers
-policy-driven execution
-enterprise compliance workflows
-traceable AI pipelines
-signed governance artifacts
-Future Roadmap
-Governance Runtime
-policy engine
-governance state machine
-escalation workflows
-promotion lifecycle
-Enterprise Readiness
-RBAC
-tenant isolation
-audit telemetry
-structured event logging
-Immutable Audit Infrastructure
-signed artifacts
-hash-chain verification
-ledger-backed governance events
-Installation
-git clone https://github.com/batt1984rodrigo-del/tcria-09215b00.git
-
-cd tcria-09215b00
-
-pip install -r requirements.txt
-Running the Governance Pipeline
-python run_governance_pipeline.py
-Example Outputs
-
-TCRIA can generate:
-
-governance reports
-blocked artifact reviews
-traceability diagnostics
-audit PDFs
-structured evidence summaries
-Safety Notice
-
-TCRIA is not intended to autonomously determine guilt, liability, or legal responsibility.
-
-The platform exists to:
-
-structure evidence
-improve auditability
-enforce governance boundaries
-preserve accountability
-
-Human review remains mandatory.
-
-License
-
-MIT License
-
-Contributing
-
-Contributions focused on:
-
-governance infrastructure
-auditability
-traceability
-compliance automation
-evidence integrity
-responsible AI systems
-
-are welcome.
-
-See CONTRIBUTING.md.## Deployment Architecture
-
-TCRIA supports multiple deployment targets and governance runtime configurations.
-
-The platform is designed to operate as a distributed governance system capable of orchestrating:
-
-- governance-aware AI pipelines
-- audit artifact generation
-- MCP runtime integrations
-- traceability validation
-- compliance enforcement
-- evidence processing workflows
-
----
-
-## Current Deployment Layers
-
-| Layer | Responsibility |
-|---|---|
-| Web UI | Governance dashboards and visualization |
-| Governance API | Responses API orchestration and governance enforcement |
-| MCP Gateway | Model Context Protocol runtime integration |
-| Audit Runtime | Audit artifact generation and traceability validation |
-| Governance Engine | Policy enforcement and compliance gates |
-
----
-
-## Supported Deployment Targets
-
-| Platform | Purpose |
-|---|---|
-| GitHub Pages | Static web interface |
-| Railway | Governance API runtime and orchestration |
-| Render | Alternative deployment runtime |
-| Docker Compose | Local governance and MCP runtime |
-| Codespaces / Dev Containers | Development environment |
-
----
-
-## Runtime Components
-
-### Governance API
-
-Primary orchestration layer responsible for:
-
-- Responses API integration
-- governance validation
-- policy enforcement
-- compliance gate execution
-- evidence routing
-- audit trace generation
-
-Main files:
-
-```text
-app.py
-api/
-run_governance_pipeline.py
+TCRIA → Quinta Ordem → Precision
+
+Arquitetura de Auditoria Integrada
+Fluxo unidirecional, contínuo, rastreável e preservável
+
+> **Documento de Arquitetura:** composição de três sistemas
+> independentes de auditoria, preservando autonomia, outputs,
+> responsabilidades e histórico de cada camada.
+
+TCRIA → Quinta Ordem → Precision
+
+```
+ Arquitetura de auditoria em uxo unidirecional, contínuo, rastreável e preservável.
+
+ Este projeto integra conceitualmente três sistemas independentes de auditoria:
+
+ * TCRIA
+ * Quinta Ordem
+ * Precision
+
+ Cada um desses sistemas permanece como um módulo autônomo, com funções, regras, outputs
+ e responsabilidades próprios.
+
+ A integração não converte os três sistemas em um único auditor.
+
+ Em vez disso, ela estabelece um uxo controlado de informação, no qual cada módulo recebe o
+ estado gerado anteriormente, realiza sua própria análise e contribui com seus próprios resultados
+ para a trilha de auditoria.
+
+ Documento / Evidência
+     │
+     ▼
+    TCRIA
+     │
+     │ bundle + estados + trilha + outputs TCRIA
+     ▼
+  QUINTA ORDEM
+     │
+     │ preservação do TCRIA
+     │ + avaliação Quinta Ordem
+     │ + outputs Quinta Ordem
+     ▼
+   PRECISION
+     │
+     │ preservação TCRIA + Quinta
+     │ + avaliação Precision
+     │ + outputs Precision
+     ▼
+ RESULTADO COMPOSTO
 ```
 
----
+1. Princípio Fundamental
 
-### MCP Gateway Runtime
+```
+ A arquitetura segue um princípio simples:
 
-TCRIA includes enterprise-oriented MCP integration for controlled AI orchestration.
-
-The MCP layer enables:
-
-- governance-aware model routing
-- controlled context propagation
-- auditable orchestration
-- runtime supervision
-- traceability-aware execution
-
-Main files:
-
-```text
-mcp_server.py
-Dockerfile.mcp
-docker-compose.mcp.yml
-.env.mcp.example
-MCP_OPENAI_SETUP.md
+ O uxo de informação segue uma única direção:
 ```
 
----
+TCRIA → Quinta Ordem → Precision
 
-## Local Development Execution
+```
+ A informação não retorna para uma etapa anterior dentro da mesma execução.
 
-### Clone Repository
+ Uma camada posterior pode:
 
-```bash
-git clone https://github.com/batt1984rodrigo-del/tcria-09215b00.git
-cd tcria-09215b00
+ * analisar um estado anterior;
+ * questioná-lo;
+ * acrescentar evidência;
+ * acrescentar uma nova classi cação;
+ * registrar uma divergência;
+ * manter uma incerteza;
 ```
 
-### Install Dependencies
+fl fl fi fl
 
-```bash
-pip install -r requirements.txt
+```
+      * exigir revisão humana;
+      * impedir promoção indevida.
+
+      No entanto, ela não altera o resultado histórico estabelecido por uma camada anterior.
 ```
 
-### Configure Environment
+2. Continuidade Obrigatória
 
-```bash
-cp .env.example .env
-cp .env.mcp.example .env.mcp
+```
+      O uxo de informação não possui interrupções intermediárias.
+
+      erro ─┐
+      null  │
+      bloqueado │
+      pendente ├──         continuam no uxo
+      sinal │
+      aviso │
+      falha ─┘
+
+      Um problema identi cado por um módulo não impede automaticamente a execução dos
+      módulos subsequentes.
+
+      Cada módulo permanece responsável por gerar seus próprios resultados.
+
+      Portanto:
+
+      FLUXO
+      → continua
+      PROMOÇÃO DE UMA AFIRMAÇÃO
+      → pode ser refutada
+
+      Essa distinção é fundamental para a arquitetura.
+
+      Um item pode percorrer toda a trilha como:
+
+      * não determinado;
+      * não suportado;
+      * hipótese;
+      * sinal;
+      * bloqueado;
+      * ilegível;
+      * pendente;
+      * dependente de revisão humana.
+
+      O que ele não pode fazer é adquirir arti cialmente um nível de certeza que a evidência não
+      justi ca.
 ```
 
-Required environment variables typically include:
+3. Os Três Módulos
 
-```env
-OPENAI_API_KEY=your_api_key
-OPENAI_MODEL=gpt-4.1
+3.1 TCRIA — Governança da Base Informacional
+
+```
+      O TCRIA ocupa a primeira posição, pois sua função precede as demais:
+
+      organizar, identi car, preservar e quali car o ambiente informacional que será auditado.
+
+      Ele não precisa tentar solucionar tudo.
 ```
 
----
+fl fi fi ► fi fl fi fi
 
-## Running the Governance Runtime
+```
+      Seu valor reside, em grande parte, em seu comportamento conservador.
 
-### Standard Governance Pipeline
+      Quando consegue sustentar uma conclusão, registra-a.
 
-```bash
-python run_governance_pipeline.py
+      Quando identi ca uma ocorrência, mas não possui suporte su ciente para concluir determinado
+      atributo, deve preservar simultaneamente:
+
+      ocorrência = registrada
+      motivo = registrado
+      conclusão = nula
+
+      nula é informação
+
+      Nesta arquitetura:
+
+
+
+
+
+
+
+      nula ≠ erro genérico
+      nula ≠ resposta inventada
+      O valor “null” não equivale à classi cação arti cial.
+
+      O valor “null” indica:
+
+      “Esta camada não possui suporte su ciente para emitir uma conclusão sobre este atributo.”
+
+      Isso estabelece uma fronteira epistemológica explícita.
+
+      A camada subsequente recebe tanto aquilo que o TCRIA conseguiu determinar quanto aquilo que
+      ele deliberadamente não determinou.
 ```
 
-### API Runtime
+Técnicas e Princípios Adotados pelo TCRIA
 
-```bash
-python app.py
+```
+      O TCRIA se concentra particularmente em:
+
+      * Proveniência;
+      * Rastreabilidade;
+      * Integridade de artefatos;
+      * Cadeia de custódia;
+      * Identi cação por hash;
+      * Segregação de estados informacionais;
+      * Trilha de auditoria;
+      * Gates de governança;
+      * Classi cação conservadora;
+      * Registro explícito de falhas;
+      * Preservação da incerteza;
+      * Não promoção sem suporte;
+      * Separação entre core governado e adapters;
+      * Preservação da responsabilidade humana.
 ```
 
-Depending on the API implementation:
+fi fi fi fi fi fi fi
 
-```bash
-uvicorn api.main:app --reload
+Função na Arquitetura
+
+```
+ Documento bruto
+    ↓
+   TCRIA
+    ↓
+ Ambiente informacional organizado
+    ↓
+ Bundle auditável
+    ↓
+ Quinta Ordem
+
+ O TCRIA fornece a base sobre a qual as etapas subsequentes se baseiam.
 ```
 
----
+4. Quinta Ordem — Veri cação Estrutural
 
-## MCP Runtime Execution
+```
+ A Quinta Ordem recebe o estado produzido pelo TCRIA sem alterar o resultado original.
 
-### Docker Compose
+ Sua questão principal difere:
 
-```bash
-docker compose -f docker-compose.mcp.yml up
+ O conjunto recebido é íntegro, rastreável, sustentado, consistente e su cientemente resolvido?
+
+ A Quinta Ordem implementa veri cadores determinísticos voltados a dimensões distintas da
+ qualidade da informação.
+
+ Entre as dimensões centrais estão:
 ```
 
-This runtime may include:
+Integridade
 
-- governance API services
-- MCP gateway services
-- orchestration runtime
-- audit processing services
+```
+ Veri ca se o contexto recebido apresenta estrutura e condições internas compatíveis com o
+ contrato esperado.
 
----
+ Pergunta:
 
-## Deployment Observability
+ O objeto que chegou até aqui é estruturalmente con ável para ser avaliado?
+```
 
-The repository currently includes:
+Rastreabilidade
 
-- multi-environment deployment support
+```
+ Veri ca se informações, achados e decisões possuem referências capazes de ligar o resultado à
+ sua origem.
 
-- Railway deployment configuration
+ Pergunta:
 
-- Render deployment configuration
+ É possível rastrear a origem desta a rmação?
+```
 
-- GitHub Pages deployment pipelines
+Suporte de evidência
 
-- containerized MCP runtime execution
+```
+ Analisa a relação entre a rmações e evidências declaradas.
 
-- automated release artifacts
+ Pergunta:
 
-- governance orchestration workflows
+ O grau da a rmação é compatível com o grau de suporte disponível?
+```
 
-- runtime observability foundations
+Consistência lógica
 
-- deployment lifecycle traceability
+```
+ Procura contradições e incompatibilidades entre estados, achados, decisões e evidências.
 
-Deployment metadata, release activity, and runtime execution history can be inspected through the repository deployment records and CI/CD workflows.
+ Pergunta:
+```
 
----
+fi fi fi fi fi fi fi fi fi
 
-## Enterprise Runtime Direction
+```
+ O conjunto é internamente coerente?
+```
 
-TCRIA is evolving toward an enterprise-grade governance infrastructure focused on operational accountability, compliance orchestration, and audit integrity.
+Resolução
 
-Current and planned governance capabilities include:
+```
+ Identi ca pontos ainda não solucionados.
 
-- role-based access control (RBAC)
+ Pergunta:
 
-- tenant isolation architecture
+ Quais questões permanecem abertas após a primeira camada?
 
-- immutable audit ledgers
+ Essa dimensão se relaciona diretamente com:
 
-- signed governance artifacts
+ * null;
+ * sinais;
+ * lacunas;
+ * warnings;
+ * evidência parcial;
+ * questões que exigem revisão humana.
+```
 
-- governance state machines
+4.1 Reclassi cação não signi ca reescrita
 
-- escalation and approval workflows
+```
+ Considere:
 
-- structured audit telemetry
+ TCRIA:
+ conclusão = null
 
-- ledger-backed traceability
+ A Quinta Ordem pode produzir:
 
-- policy-driven execution controls
+ Quinta Ordem:
+ avaliação própria = hipótese sustentada parcialmente
 
-- runtime governance enforcement
+ Mas o histórico continua sendo:
 
-- compliance-oriented orchestration
+ TCRIA:
+ conclusão = null
+ Quinta Ordem:
+ avaliação própria = hipótese sustentada parcialmente
 
-- evidence preservation pipelines
+ Nunca:
 
-- governance event correlation
+ TCRIA:
+ conclusão = fato
 
-- operational chain-of-custody tracking
+ A camada posterior acrescenta estado.
 
-- audit-ready execution reporting
+ Ela não altera o passado.
+```
 
----
+5. Precision — estado, suporte e precisão operacional
 
-## Operational Philosophy
+```
+ O Precision ocupa a terceira posição.
 
-TCRIA follows a governance-first operational model.
+ Nesse momento, a informação já possui:
+```
 
-AI orchestration is always subordinated to:
+fi fi fi
 
-- compliance requirements
-- human accountability
-- traceability enforcement
-- governance validation
-- promotion safety controls
+```
+           O Precision analisa a história acumulada das informações. Sua principal questão é determinar o
+           estado atual de cada informação e até que ponto ela pode ser legitimamente utilizada. O
+           Precision monitora os estados informacionais e de custódia, preservando:
 
-The runtime is intentionally designed to block unsafe or non-governed automation paths.
+           * Origem;
+           * Referências;
+           * Hashes;
+           * Suporte;
+           * Classi cações anteriores;
+           * Findings;
+           * Warnings;
+           * Incertezas;
+           * Exigências de revisão humana.
+```
 
-Vision
+5.1 Controle de Promoção
 
-TCRIA aims to become a governance infrastructure layer for high-risk AI-assisted evidence and compliance systems.
+```
+           Uma das funções essenciais do Precision é impedir que uma informação seja promovida além do
+           suporte disponível. Por exemplo, um sinal pode permanecer como “continua sinal” até que haja
+           suporte su ciente para outra classi cação. Da mesma forma, alegações, hipóteses, inferências,
+           estados nulos, pendentes, bloqueados e outros podem continuar a progredir pelo sistema,
+           mantendo seu estado e histórico.
+```
 
-The project focuses on building:
+Princípios Atendidos pelo Precision
 
-auditable AI pipelines
-governance-aware orchestration
-traceable evidence systems
-accountable automation frameworks
+```
+           O Precision se concentra em:
+
+           * Cadeia de custódia móvel;
+           * Controle de promoção;
+           * Preservação de estado;
+           * Atribuição explícita de fonte;
+           * Suporte referenciado;
+           * Hashes;
+           * Manifests;
+           * Estado versionado de execução;
+           * Classi cação de incerteza;
+           * Identi cação de divergências;
+           * Alertas;
+           * Métricas operacionais;
+           * Consolidação da trilha;
+           * Outputs derivados;
+           * Preservação da decisão humana.
+```
+
+6. Arco Complementar de Auditoria
+
+```
+           Os três módulos não executam três versões da mesma análise. Eles abordam problemas
+           distintos.
+
+                      EVIDÊNCIA
+                        │
+                        ▼
+                    ┌──────────────┐
+                    │ TCRIA │
+                    │         │
+                    │ proveniência │
+                    │ custódia │
+                    │ organização │
+                    │ governança │
+                    └──────┬───────┘
+                         │
+```
+
+fi fi fi fi fi
+
+```
+          ▼
+     ┌─────────────────┐
+     │ QUINTA ORDEM │
+     │            │
+     │ integridade │
+     │ rastreabilidade │
+     │ Suporte       │
+     │ Consistência │
+     │ Resolução      │
+     └────────┬────────┘
+         │
+         ▼
+      ┌─────────────┐
+      │ PRECISION │
+      │        │
+      │ Estado   │
+      │ Promoção │
+      │ Suporte │
+      │ Precisão │
+      │ Custódia │
+      └──────┬──────┘
+        │
+        ▼
+     RESULTADO AUDITÁVEL
+```
+
+O valor da composição reside precisamente nessa complementaridade.
+
+7. Técnicas e Princípios de Auditoria Abordados
+
+A arquitetura integra técnicas relacionadas a diferentes dimensões da
+auditabilidade.
+
+Dimensão TCRIA Quinta Ordem Precision Proveniência ✓ observa preserva
+Integridade do Artefato ✓ veri ca preserva Hash / Identi cação ✓ utiliza
+preserva Cadeia de Custódia ✓ continua acompanha Rastreabilidade ✓ veri
+ca consolida Governança ✓ respeita respeita Evidência e Suporte organiza
+veri ca controla promoção Integridade Estrutural prepara veri ca observa
+Consistência Lógica registra contexto veri ca preserva divergência
+Pontos Não Resolvidos registra avalia mantém estado Null / Ausência de
+Conclusão produz analisa preserva Incerteza registra avalia classi ca
+Controle de Promoção inicia veri ca reforça Revisão Humana sinaliza pode
+exigir preserva Audit Trail produz acrescenta consolida Outputs Próprios
+✓ ✓ ✓
+
+A cobertura não implica que todos os módulos desempenhem a mesma função.
+
+Ao contrário:
+
+a arquitetura é valiosa porque distribui responsabilidades distintas
+entre auditores diferentes.
+
+fi fi fi fi fi fi fi fi
+
+8. Monotonicidade do Histórico
+
+```
+ A arquitetura pode ser representada por estados sucessivos.
+
+ S0 = documento original
+ S1 = S0 + output_TCRIA
+ S2 = S1 + output_Quinta
+ S3 = S2 + output_Precision
+
+ Portanto:
+
+ S0 ⊂ S1 ⊂ S2 ⊂ S3
+
+ no sentido de acúmulo histórico da trilha.
+
+ Isso não signi ca que a con ança aumente necessariamente.
+
+ É perfeitamente possível:
+
+ TCRIA:
+ O conhecimento sobre o caso foi ampliado, porém a con ança na a rmação correspondente
+ diminuiu. Apesar disso, o histórico permaneceu inalterado.
+```
+
+9. Imutabilidade Lógica das Etapas
+
+```
+ Uma execução possui uma única direção.
+
+ RUN-001
+ Documento
+   ↓
+ TCRIA
+   ↓
+ Quinta Ordem
+   ↓
+ Precision
+   ↓
+  m da trilha
+
+ Caso surja uma correção material posteriormente, esta não altera silenciosamente a execução
+ anterior. Em vez disso, gera uma nova execução:
+
+ RUN-001
+ Documento A
+ → TCRIA
+ → Quinta
+ → Precision
+ RUN-002
+ Documento A corrigido
+ → TCRIA
+ → Quinta
+ → Precision
+
+ Assim, RUN-001 permanece preservado, enquanto RUN-002 registra a nova realidade. A história
+ não é apagada.
+```
+
+10. Falha Também é Dado
+
+fi fi fi fi fi
+
+```
+ A arquitetura diferencia entre falha de conteúdo e falha do sistema. Se uma evidência não puder
+ ser lida, por exemplo, a trilha não deve presumir que foi compreendida. O estado pode ser
+ registrado como:
+
+ * extraction_failed
+ * unreadable
+ * null
+ * human_review_required
+ * not_promotable_as_fact
+
+ e a execução prossegue. A etapa seguinte recebe a falha como parte do contexto auditável.
+```
+
+11. Outputs Independentes
+
+```
+ A integração não substitui os outputs naturais dos produtos. Cada sistema continua a emitir seus
+ próprios artefatos.
+
+ TCRIA
+ ├── outputs TCRIA
+ ├── bundles
+ ├── registros
+ └── trilha
+
+ Quinta Ordem
+ ├── outputs Quinta
+ ├── ndings
+ ├── avaliações
+ └── trilha complementar
+
+ Precision
+ ├── outputs Precision
+ ├── métricas
+ ├── estados
+ ├── alertas
+ └── relatórios derivados
+
+ O resultado composto é independente dos outputs individuais, não os substitui.
+```
+
+12. Separação de Responsabilidades
+
+```
+ A arquitetura segue uma hierarquia de autoridade:
+
+ TEORIA
+  ↓
+ ARQUITETURA
+  ↓
+ CONTRATOS
+  ↓
+ CÓDIGO
+  ↓
+ TESTES
+  ↓
+ EVIDÊNCIA
+```
+
+fi
+
+```
+                     O código deve concretizar a teoria.
+
+                     A teoria não deve ser modi cada apenas para justi car uma implementação prévia.
+
+                     Em caso de divergência:
+```
+
+1. Identi car a origem da discrepância;
+
+2. Documentar a situação;
+
+3. Determinar o componente responsável;
+
+4. Corrigir apenas o componente afetado;
+
+5. Realizar novos testes;
+
+6. Gerar evidência da correção.
+
+13. Integrações e Adapters
+
+```
+                     As interfaces externas devem permanecer fora da lógica cientí ca central.
+
+                     Os adapters podem:
+
+                     * Validar as entradas;
+                     * Transportar informações;
+                     * Invocar operações documentadas;
+                     * Entregar artefatos;
+                     * Registrar falhas;
+                     * Expor funções.
+
+                     Os adapters não devem:
+
+                     * Rede nir os resultados o ciais;
+                     * Criar lógica paralela oculta;
+                     * Promover informações de forma independente;
+                     * Substituir os gates;
+                     * Transformar opiniões externas em fatos;
+                     * Modi car silenciosamente outputs anteriores.
+
+                     Os protocolos de integração servem como meios de transporte e exposição, não como
+                     autoridades cientí cas da auditoria.
+```
+
+14. Papel da Decisão Humana
+
+```
+                     Nenhum dos três módulos substitui automaticamente a responsabilidade humana nal.
+
+                     O sistema pode:
+
+                     * Organizar;
+                     * Veri car;
+                     * Medir;
+                     * Classi car;
+                     * Emitir alertas;
+                     * Registrar;
+                     * Preservar;
+                     * Apontar inconsistências;
+                     * Impedir a promoção indevida.
+```
+
+fi fi fi fi fi fi fi fi fi fi fi
+
+```
+                Decisões institucionais, legais, administrativas ou de outra natureza com consequências
+                signi cativas permanecem sob a responsabilidade de autoridades humanas competentes.
+```
+
+15. Estado Atual da Integração
+
+```
+                Os três módulos possuem implementações independentes e mecanismos de integração já
+                incorporados em seus respectivos códigos.
+
+                Entre esses mecanismos, destacam-se:
+
+                * bundles de auditoria no TCRIA;
+                * contratos de integração;
+                * adaptador TCRIA → Quinta Ordem;
+                * veri cadores determinísticos da Quinta Ordem;
+                * adaptador de decisões da Quinta Ordem para o Precision;
+                * estados de custódia e informação;
+                * métricas;
+                * relatórios;
+                * testes automatizados de componentes e adaptadores.
+
+                É fundamental diferenciar duas a rmações.
+```
+
+Já Implementado
+
+```
+                Existem mecanismos concretos para:
+
+                * rastreabilidade;
+                * integridade;
+                * suporte;
+                * cadeia de custódia;
+                * preservação de estado;
+                * classi cação de incerteza;
+                * veri cação determinística;
+                * controle de promoção;
+                * outputs independentes.
+```
+
+Ainda Requer Validação Experimental Completa
+
+```
+                Ainda deve ser demonstrado empiricamente, por meio de execução controlada e reprodutível,
+                que o uxo completo:
+```
+
+TCRIA → Quinta Ordem → Precision
+
+```
+                alcança os ganhos esperados em comparação à execução isolada dos módulos.
+
+                Essa distinção é intencional.
+
+                A arquitetura implementada não equivale a uma hipótese experimental comprovada.
+```
+
+16. Hipótese de Composição
+
+```
+                A hipótese principal da integração é:
+
+                A integração de técnicas complementares de governança da evidência, veri cação estrutural e
+                controle do estado da informação, mantendo integralmente a trilha anterior, permite a
+```
+
+fi fi fi fl fi fi fi
+
+```
+ composição TCRIA → Quinta Ordem → Precision gerar uma auditoria mais abrangente e
+ rastreável do que qualquer módulo isoladamente.
+
+ Essa hipótese é passível de teste.
+
+ A avaliação pode ser realizada por meio de:
+
+ * Preservação dos contratos;
+ * Integridade da trilha;
+ * Cobertura das dimensões de auditoria;
+ * Quantidade e qualidade das incertezas identi cadas;
+ * Prevenção de promoção indevida de informações;
+ * Reprodutibilidade;
+ * Detecção de divergências;
+ * Ganho de informação entre os estágios.
+```
+
+17. Regra de Ouro
+
+```
+ A arquitetura pode ser resumida da seguinte forma:
+
+ * Preservar o que foi inserido.
+ * Registrar as observações realizadas por cada camada.
+ * Abster-se de criar informações não suportadas.
+ * Manter o estado anterior.
+ * Não interromper o uxo devido à incerteza.
+ * Não promover informações além de seu suporte.
+ * Permitir que cada auditor execute suas funções especí cas.
+
+ Em termos mais simples:
+
+ O uxo de informações deve ser contínuo e ininterrupto.
+
+ Documento
+   ↓
+ TCRIA
+   ↓
+ Quinta Ordem
+   ↓
+ Precision
+   ↓
+ Evidência auditável
+```
+
+Repositórios
+
+```
+ * TCRIA: batt1984rodrigo-del/tcria-09215b00
+ * Quinta Ordem: batt1984rodrigo-del/Fifth-order
+ * Precision: batt1984rodrigo-del/precision-gate
+```
+
+Status
+
+```
+ Esta documentação descreve a arquitetura canônica pretendida para a composição dos três
+ auditores.
+```
+
+fl fl fi fi
+
+Os módulos permanecem independentes.
+
+A próxima etapa de validação consiste em comprovar experimentalmente o
+uxo completo, preservando:
+
+• Saídas TCRIA;
+• Saídas Quinta Ordem;
+• Saídas Precision;
+• Cadeia de custódia;
+• Estados intermediários;
+• Incertezas;
+• Hashes e referências;
+• Evidência de execução;
